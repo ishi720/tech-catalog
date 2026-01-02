@@ -311,6 +311,201 @@ export const libraries: Library[] = [
   // グラフ・可視化
   { id: 'php-chart', name: 'Chart.js via CDN', category: 'chart', language: 'php', description: 'PHPからChart.js利用', officialUrl: 'https://www.chartjs.org/', notes: 'JavaScript CDNを利用', features: ['フロント連携'] },
   { id: 'php-jpgraph', name: 'JpGraph', category: 'chart', language: 'php', description: 'PHP画像グラフ生成', officialUrl: 'https://jpgraph.net/', features: ['画像出力', 'サーバーサイド', '多種類'] },
+
+  // ==================== Python ====================
+  
+  // フレームワーク
+  { id: 'py-django', name: 'Django', category: 'framework', language: 'python', description: 'フルスタックWebフレームワーク', packageName: 'django', officialUrl: 'https://www.djangoproject.com/', features: ['ORM', '管理画面', 'セキュリティ'] },
+  { id: 'py-flask', name: 'Flask', category: 'framework', language: 'python', description: '軽量マイクロフレームワーク', packageName: 'flask', officialUrl: 'https://flask.palletsprojects.com/', features: ['軽量', '柔軟', 'Jinja2'] },
+  { id: 'py-fastapi', name: 'FastAPI', category: 'framework', language: 'python', description: '高速API構築。型ヒント活用', packageName: 'fastapi', officialUrl: 'https://fastapi.tiangolo.com/', features: ['高速', '型ヒント', 'OpenAPI'] },
+  { id: 'py-starlette', name: 'Starlette', category: 'framework', language: 'python', description: '軽量ASGIフレームワーク', packageName: 'starlette', officialUrl: 'https://www.starlette.io/', features: ['ASGI', '非同期', '軽量'] },
+  
+  // テスト関連
+  { id: 'py-pytest', name: 'pytest', category: 'testing', language: 'python', description: 'Python定番テストフレームワーク', packageName: 'pytest', officialUrl: 'https://pytest.org/', features: ['フィクスチャ', 'パラメータ化', 'プラグイン'] },
+  { id: 'py-unittest', name: 'unittest', category: 'testing', language: 'python', description: 'Python標準テストライブラリ', officialUrl: 'https://docs.python.org/3/library/unittest.html', features: ['標準', 'xUnit', 'モック'] },
+  { id: 'py-selenium', name: 'Selenium', category: 'testing', language: 'python', description: 'ブラウザ自動化', packageName: 'selenium', officialUrl: 'https://www.selenium.dev/', features: ['E2E', 'マルチブラウザ'] },
+  
+  // 画像関連
+  { id: 'py-pillow', name: 'Pillow', category: 'image', language: 'python', description: 'Python画像処理の定番', packageName: 'pillow', officialUrl: 'https://pillow.readthedocs.io/', features: ['変換', 'リサイズ', 'フィルター'] },
+  { id: 'py-opencv', name: 'OpenCV', category: 'image', language: 'python', description: 'コンピュータビジョン', packageName: 'opencv-python', officialUrl: 'https://opencv.org/', features: ['画像処理', '物体検出', '動画'] },
+  
+  // スクレイピング関連
+  { id: 'py-beautifulsoup', name: 'Beautiful Soup', category: 'scraping', language: 'python', description: 'HTMLパーサー定番', packageName: 'beautifulsoup4', officialUrl: 'https://www.crummy.com/software/BeautifulSoup/', features: ['HTMLパース', 'CSSセレクタ'] },
+  { id: 'py-scrapy', name: 'Scrapy', category: 'scraping', language: 'python', description: 'Webスクレイピングフレームワーク', packageName: 'scrapy', officialUrl: 'https://scrapy.org/', features: ['クローリング', 'パイプライン'] },
+  { id: 'py-playwright', name: 'Playwright Python', category: 'scraping', language: 'python', description: 'ブラウザ自動化', packageName: 'playwright', officialUrl: 'https://playwright.dev/python/', features: ['マルチブラウザ', '自動待機'] },
+  
+  // AI関連
+  { id: 'py-pytorch', name: 'PyTorch', category: 'ai', language: 'python', description: 'Meta製深層学習フレームワーク', packageName: 'torch', officialUrl: 'https://pytorch.org/', features: ['動的グラフ', 'GPU', '研究向け'] },
+  { id: 'py-tensorflow', name: 'TensorFlow', category: 'ai', language: 'python', description: 'Google製機械学習', packageName: 'tensorflow', officialUrl: 'https://www.tensorflow.org/', features: ['本番向け', 'Keras'] },
+  { id: 'py-scikit-learn', name: 'scikit-learn', category: 'ai', language: 'python', description: '機械学習ライブラリ定番', packageName: 'scikit-learn', officialUrl: 'https://scikit-learn.org/', features: ['分類', '回帰', 'クラスタリング'] },
+  { id: 'py-transformers', name: 'Transformers', category: 'ai', language: 'python', description: 'HuggingFace NLPライブラリ', packageName: 'transformers', officialUrl: 'https://huggingface.co/', features: ['BERT', 'GPT', '事前学習'] },
+  { id: 'py-langchain', name: 'LangChain', category: 'ai', language: 'python', description: 'LLMアプリケーション構築', packageName: 'langchain', officialUrl: 'https://python.langchain.com/', features: ['チェーン', 'RAG'] },
+  { id: 'py-openai', name: 'OpenAI Python', category: 'ai', language: 'python', description: 'OpenAI API公式', packageName: 'openai', officialUrl: 'https://platform.openai.com/', features: ['GPT', 'DALL-E'] },
+  { id: 'py-numpy', name: 'NumPy', category: 'ai', language: 'python', description: '数値計算ライブラリ', packageName: 'numpy', officialUrl: 'https://numpy.org/', features: ['配列', '線形代数'] },
+  { id: 'py-pandas', name: 'Pandas', category: 'ai', language: 'python', description: 'データ分析ライブラリ', packageName: 'pandas', officialUrl: 'https://pandas.pydata.org/', features: ['DataFrame', '集計'] },
+  
+  // DB操作関連
+  { id: 'py-sqlalchemy', name: 'SQLAlchemy', category: 'database', language: 'python', description: 'Python ORM定番', packageName: 'sqlalchemy', officialUrl: 'https://www.sqlalchemy.org/', features: ['ORM', 'Core', 'マイグレーション'] },
+  { id: 'py-peewee', name: 'Peewee', category: 'database', language: 'python', description: '軽量ORM', packageName: 'peewee', officialUrl: 'http://docs.peewee-orm.com/', features: ['軽量', 'シンプル'] },
+  { id: 'py-pymongo', name: 'PyMongo', category: 'database', language: 'python', description: 'MongoDB公式ドライバ', packageName: 'pymongo', officialUrl: 'https://pymongo.readthedocs.io/', features: ['MongoDB', '公式'] },
+  
+  // タスク管理
+  { id: 'py-celery', name: 'Celery', category: 'task-queue', language: 'python', description: '分散タスクキュー定番', packageName: 'celery', officialUrl: 'https://docs.celeryq.dev/', features: ['分散', 'Redis/RabbitMQ'] },
+  { id: 'py-rq', name: 'RQ', category: 'task-queue', language: 'python', description: '軽量Redisジョブキュー', packageName: 'rq', officialUrl: 'https://python-rq.org/', features: ['シンプル', 'Redis'] },
+  
+  // 認証・認可
+  { id: 'py-pyjwt', name: 'PyJWT', category: 'auth', language: 'python', description: 'JWT実装', packageName: 'pyjwt', officialUrl: 'https://pyjwt.readthedocs.io/', features: ['JWT', 'シンプル'] },
+  { id: 'py-passlib', name: 'Passlib', category: 'auth', language: 'python', description: 'パスワードハッシュ', packageName: 'passlib', officialUrl: 'https://passlib.readthedocs.io/', features: ['bcrypt', 'argon2'] },
+  
+  // HTTP通信
+  { id: 'py-requests', name: 'Requests', category: 'http', language: 'python', description: 'HTTP for Humans', packageName: 'requests', officialUrl: 'https://requests.readthedocs.io/', features: ['シンプル', 'セッション'] },
+  { id: 'py-httpx', name: 'HTTPX', category: 'http', language: 'python', description: '次世代HTTPクライアント', packageName: 'httpx', officialUrl: 'https://www.python-httpx.org/', features: ['非同期', 'HTTP/2'] },
+  { id: 'py-aiohttp', name: 'aiohttp', category: 'http', language: 'python', description: '非同期HTTP', packageName: 'aiohttp', officialUrl: 'https://docs.aiohttp.org/', features: ['非同期', 'WebSocket'] },
+  
+  // バリデーション
+  { id: 'py-pydantic', name: 'Pydantic', category: 'validation', language: 'python', description: 'データバリデーション', packageName: 'pydantic', officialUrl: 'https://docs.pydantic.dev/', features: ['型ヒント', 'JSON Schema'] },
+  { id: 'py-marshmallow', name: 'Marshmallow', category: 'validation', language: 'python', description: 'シリアライズ/バリデーション', packageName: 'marshmallow', officialUrl: 'https://marshmallow.readthedocs.io/', features: ['シリアライズ', 'スキーマ'] },
+  
+  // 日付・時間
+  { id: 'py-pendulum', name: 'Pendulum', category: 'date', language: 'python', description: 'datetime拡張', packageName: 'pendulum', officialUrl: 'https://pendulum.eustace.io/', features: ['タイムゾーン', 'イミュータブル'] },
+  { id: 'py-arrow', name: 'Arrow', category: 'date', language: 'python', description: '日付操作シンプル化', packageName: 'arrow', officialUrl: 'https://arrow.readthedocs.io/', features: ['シンプル', 'パース'] },
+  
+  // ファイル操作
+  { id: 'py-openpyxl', name: 'openpyxl', category: 'file', language: 'python', description: 'Excel読み書き', packageName: 'openpyxl', officialUrl: 'https://openpyxl.readthedocs.io/', features: ['Excel', 'スタイル'] },
+  { id: 'py-boto3', name: 'Boto3', category: 'file', language: 'python', description: 'AWS SDK（S3等）', packageName: 'boto3', officialUrl: 'https://boto3.amazonaws.com/', features: ['S3', 'AWS'] },
+  
+  // メール送信
+  { id: 'py-sendgrid', name: 'SendGrid', category: 'email', language: 'python', description: 'SendGrid公式SDK', packageName: 'sendgrid', officialUrl: 'https://sendgrid.com/', features: ['API', 'テンプレート'] },
+  
+  // 決済
+  { id: 'py-stripe', name: 'Stripe Python', category: 'payment', language: 'python', description: 'Stripe公式SDK', packageName: 'stripe', officialUrl: 'https://stripe.com/', features: ['決済', 'サブスク'] },
+  
+  // 検索
+  { id: 'py-elasticsearch', name: 'elasticsearch-py', category: 'search', language: 'python', description: 'Elasticsearch公式', packageName: 'elasticsearch', officialUrl: 'https://www.elastic.co/', features: ['Elasticsearch', '全文検索'] },
+  
+  // ログ・監視
+  { id: 'py-loguru', name: 'Loguru', category: 'logging', language: 'python', description: 'シンプルなロギング', packageName: 'loguru', github: 'https://github.com/Delgan/loguru', features: ['シンプル', 'カラー'] },
+  { id: 'py-sentry', name: 'Sentry SDK', category: 'logging', language: 'python', description: 'エラートラッキング', packageName: 'sentry-sdk', officialUrl: 'https://sentry.io/', features: ['エラー追跡'] },
+  
+  // UIコンポーネント
+  { id: 'py-jinja2', name: 'Jinja2', category: 'ui', language: 'python', description: 'テンプレートエンジン', packageName: 'jinja2', officialUrl: 'https://jinja.palletsprojects.com/', features: ['テンプレート', '継承'] },
+  { id: 'py-streamlit', name: 'Streamlit', category: 'ui', language: 'python', description: 'データアプリUI', packageName: 'streamlit', officialUrl: 'https://streamlit.io/', features: ['データアプリ', '簡単'] },
+  { id: 'py-gradio', name: 'Gradio', category: 'ui', language: 'python', description: 'ML デモUI', packageName: 'gradio', officialUrl: 'https://gradio.app/', features: ['ML向け', 'HuggingFace'] },
+  
+  // リアルタイム通信
+  { id: 'py-websockets', name: 'websockets', category: 'realtime', language: 'python', description: 'WebSocketライブラリ', packageName: 'websockets', officialUrl: 'https://websockets.readthedocs.io/', features: ['asyncio', 'WebSocket'] },
+  { id: 'py-socketio', name: 'python-socketio', category: 'realtime', language: 'python', description: 'Socket.IOサーバー', packageName: 'python-socketio', officialUrl: 'https://python-socketio.readthedocs.io/', features: ['Socket.IO', '非同期'] },
+  
+  // PDF操作
+  { id: 'py-reportlab', name: 'ReportLab', category: 'pdf', language: 'python', description: 'PDF生成', packageName: 'reportlab', officialUrl: 'https://www.reportlab.com/', features: ['PDF生成', '日本語'] },
+  { id: 'py-pypdf', name: 'pypdf', category: 'pdf', language: 'python', description: 'PDF操作', packageName: 'pypdf', officialUrl: 'https://pypdf.readthedocs.io/', features: ['マージ', '分割'] },
+  
+  // 動画・音声
+  { id: 'py-moviepy', name: 'MoviePy', category: 'video-audio', language: 'python', description: '動画編集', packageName: 'moviepy', officialUrl: 'https://zulko.github.io/moviepy/', features: ['動画編集', 'GIF'] },
+  
+  // ユーティリティ
+  { id: 'py-click', name: 'Click', category: 'utility', language: 'python', description: 'CLI作成', packageName: 'click', officialUrl: 'https://click.palletsprojects.com/', features: ['CLI', 'デコレータ'] },
+  { id: 'py-tqdm', name: 'tqdm', category: 'utility', language: 'python', description: 'プログレスバー', packageName: 'tqdm', github: 'https://github.com/tqdm/tqdm', features: ['プログレス', '汎用'] },
+  { id: 'py-rich', name: 'Rich', category: 'utility', language: 'python', description: 'リッチテキスト表示', packageName: 'rich', officialUrl: 'https://rich.readthedocs.io/', features: ['カラー', 'テーブル'] },
+  
+  // CLI作成
+  { id: 'py-typer', name: 'Typer', category: 'cli', language: 'python', description: 'CLI作成（型ヒント）', packageName: 'typer', officialUrl: 'https://typer.tiangolo.com/', features: ['型ヒント', 'Click互換'] },
+  
+  // グラフ・可視化
+  { id: 'py-matplotlib', name: 'Matplotlib', category: 'chart', language: 'python', description: 'グラフ描画定番', packageName: 'matplotlib', officialUrl: 'https://matplotlib.org/', features: ['静的グラフ', '多種類'] },
+  { id: 'py-seaborn', name: 'Seaborn', category: 'chart', language: 'python', description: '統計可視化', packageName: 'seaborn', officialUrl: 'https://seaborn.pydata.org/', features: ['統計', 'テーマ'] },
+  { id: 'py-plotly', name: 'Plotly', category: 'chart', language: 'python', description: 'インタラクティブグラフ', packageName: 'plotly', officialUrl: 'https://plotly.com/python/', features: ['インタラクティブ', '3D'] },
+
+  // ==================== Java ====================
+  
+  // フレームワーク
+  { id: 'java-spring', name: 'Spring Boot', category: 'framework', language: 'java', description: 'Javaエンタープライズ標準', packageName: 'org.springframework.boot', officialUrl: 'https://spring.io/projects/spring-boot', features: ['DI', 'Auto-config'] },
+  { id: 'java-quarkus', name: 'Quarkus', category: 'framework', language: 'java', description: 'クラウドネイティブJava', packageName: 'io.quarkus', officialUrl: 'https://quarkus.io/', features: ['高速起動', 'GraalVM'] },
+  { id: 'java-micronaut', name: 'Micronaut', category: 'framework', language: 'java', description: '軽量マイクロサービスFW', packageName: 'io.micronaut', officialUrl: 'https://micronaut.io/', features: ['AOT', '軽量'] },
+  
+  // テスト関連
+  { id: 'java-junit', name: 'JUnit 5', category: 'testing', language: 'java', description: 'Javaテスト標準', packageName: 'org.junit.jupiter', officialUrl: 'https://junit.org/junit5/', features: ['ユニットテスト', 'パラメータ化'] },
+  { id: 'java-mockito', name: 'Mockito', category: 'testing', language: 'java', description: 'モックフレームワーク', packageName: 'org.mockito', officialUrl: 'https://site.mockito.org/', features: ['モック', 'スタブ'] },
+  { id: 'java-testcontainers', name: 'Testcontainers', category: 'testing', language: 'java', description: 'Dockerコンテナテスト', packageName: 'org.testcontainers', officialUrl: 'https://testcontainers.com/', features: ['Docker', 'DB'] },
+  
+  // 画像関連
+  { id: 'java-thumbnailator', name: 'Thumbnailator', category: 'image', language: 'java', description: 'サムネイル生成', packageName: 'net.coobird.thumbnailator', github: 'https://github.com/coobird/thumbnailator', features: ['サムネイル', 'リサイズ'] },
+  
+  // スクレイピング関連
+  { id: 'java-jsoup', name: 'Jsoup', category: 'scraping', language: 'java', description: 'HTML パーサー', packageName: 'org.jsoup', officialUrl: 'https://jsoup.org/', features: ['HTMLパース', 'CSSセレクタ'] },
+  { id: 'java-selenium', name: 'Selenium Java', category: 'scraping', language: 'java', description: 'ブラウザ自動化', packageName: 'org.seleniumhq.selenium', officialUrl: 'https://www.selenium.dev/', features: ['E2E', 'マルチブラウザ'] },
+  
+  // AI関連
+  { id: 'java-deeplearning4j', name: 'Deeplearning4j', category: 'ai', language: 'java', description: 'Java深層学習', packageName: 'org.deeplearning4j', officialUrl: 'https://deeplearning4j.konduit.ai/', features: ['深層学習', 'GPU'] },
+  { id: 'java-langchain4j', name: 'LangChain4j', category: 'ai', language: 'java', description: 'Java用LLMフレームワーク', packageName: 'dev.langchain4j', officialUrl: 'https://docs.langchain4j.dev/', features: ['LLM', 'RAG'] },
+  
+  // DB操作関連
+  { id: 'java-hibernate', name: 'Hibernate', category: 'database', language: 'java', description: 'Java ORM定番', packageName: 'org.hibernate', officialUrl: 'https://hibernate.org/', features: ['JPA', 'ORM'] },
+  { id: 'java-jpa', name: 'Spring Data JPA', category: 'database', language: 'java', description: 'Spring JPA抽象化', packageName: 'org.springframework.data', officialUrl: 'https://spring.io/projects/spring-data-jpa', features: ['リポジトリ', 'クエリメソッド'] },
+  { id: 'java-mybatis', name: 'MyBatis', category: 'database', language: 'java', description: 'SQLマッパー', packageName: 'org.mybatis', officialUrl: 'https://mybatis.org/', features: ['SQLマッピング', 'XML'] },
+  { id: 'java-jooq', name: 'jOOQ', category: 'database', language: 'java', description: '型安全SQLビルダー', packageName: 'org.jooq', officialUrl: 'https://www.jooq.org/', features: ['型安全', 'DSL'] },
+  
+  // タスク管理
+  { id: 'java-quartz', name: 'Quartz', category: 'task-queue', language: 'java', description: 'ジョブスケジューラ', packageName: 'org.quartz-scheduler', officialUrl: 'https://www.quartz-scheduler.org/', features: ['スケジュール', 'Cron'] },
+  { id: 'java-spring-batch', name: 'Spring Batch', category: 'task-queue', language: 'java', description: 'バッチ処理FW', packageName: 'org.springframework.batch', officialUrl: 'https://spring.io/projects/spring-batch', features: ['バッチ', 'チャンク'] },
+  
+  // 認証・認可
+  { id: 'java-spring-security', name: 'Spring Security', category: 'auth', language: 'java', description: 'Java認証認可標準', packageName: 'org.springframework.security', officialUrl: 'https://spring.io/projects/spring-security', features: ['認証', 'OAuth2'] },
+  { id: 'java-jwt', name: 'Java JWT', category: 'auth', language: 'java', description: 'JWT実装', packageName: 'com.auth0.java-jwt', github: 'https://github.com/auth0/java-jwt', features: ['JWT', 'RS256'] },
+  
+  // HTTP通信
+  { id: 'java-okhttp', name: 'OkHttp', category: 'http', language: 'java', description: 'HTTPクライアント', packageName: 'com.squareup.okhttp3', officialUrl: 'https://square.github.io/okhttp/', features: ['HTTP/2', 'インターセプタ'] },
+  { id: 'java-retrofit', name: 'Retrofit', category: 'http', language: 'java', description: '型安全HTTPクライアント', packageName: 'com.squareup.retrofit2', officialUrl: 'https://square.github.io/retrofit/', features: ['型安全', 'アノテーション'] },
+  { id: 'java-webclient', name: 'WebClient', category: 'http', language: 'java', description: 'Spring リアクティブHTTP', packageName: 'org.springframework.web.reactive', officialUrl: 'https://spring.io/', features: ['リアクティブ', '非同期'] },
+  
+  // バリデーション
+  { id: 'java-beanvalidation', name: 'Bean Validation', category: 'validation', language: 'java', description: 'Java標準バリデーション', packageName: 'jakarta.validation', officialUrl: 'https://beanvalidation.org/', features: ['アノテーション', '標準'] },
+  
+  // 日付・時間
+  { id: 'java-datetime', name: 'java.time', category: 'date', language: 'java', description: 'Java標準日付API', officialUrl: 'https://docs.oracle.com/javase/8/docs/api/java/time/package-summary.html', features: ['標準', 'イミュータブル'] },
+  
+  // ファイル操作
+  { id: 'java-poi', name: 'Apache POI', category: 'file', language: 'java', description: 'Microsoft Office操作', packageName: 'org.apache.poi', officialUrl: 'https://poi.apache.org/', features: ['Excel', 'Word'] },
+  { id: 'java-opencsv', name: 'OpenCSV', category: 'file', language: 'java', description: 'CSV操作', packageName: 'com.opencsv', officialUrl: 'https://opencsv.sourceforge.net/', features: ['CSV', '読み書き'] },
+  
+  // メール送信
+  { id: 'java-javamail', name: 'Jakarta Mail', category: 'email', language: 'java', description: 'Java標準メールAPI', packageName: 'jakarta.mail', officialUrl: 'https://jakartaee.github.io/mail-api/', features: ['SMTP', 'IMAP'] },
+  
+  // 決済
+  { id: 'java-stripe', name: 'Stripe Java', category: 'payment', language: 'java', description: 'Stripe公式SDK', packageName: 'com.stripe', officialUrl: 'https://stripe.com/', features: ['決済', 'サブスク'] },
+  
+  // 検索
+  { id: 'java-lucene', name: 'Apache Lucene', category: 'search', language: 'java', description: '全文検索エンジン', packageName: 'org.apache.lucene', officialUrl: 'https://lucene.apache.org/', features: ['全文検索', 'インデックス'] },
+  { id: 'java-elasticsearch', name: 'Elasticsearch Java', category: 'search', language: 'java', description: 'Elasticsearch公式', packageName: 'co.elastic.clients', officialUrl: 'https://www.elastic.co/', features: ['Elasticsearch', 'REST'] },
+  
+  // ログ・監視
+  { id: 'java-slf4j', name: 'SLF4J', category: 'logging', language: 'java', description: 'ロギングファサード', packageName: 'org.slf4j', officialUrl: 'https://www.slf4j.org/', features: ['ファサード', '抽象化'] },
+  { id: 'java-logback', name: 'Logback', category: 'logging', language: 'java', description: 'ロギング実装', packageName: 'ch.qos.logback', officialUrl: 'https://logback.qos.ch/', features: ['SLF4J実装', '高性能'] },
+  
+  // UIコンポーネント
+  { id: 'java-thymeleaf', name: 'Thymeleaf', category: 'ui', language: 'java', description: 'テンプレートエンジン', packageName: 'org.thymeleaf', officialUrl: 'https://www.thymeleaf.org/', features: ['Natural Templates', 'Spring連携'] },
+  
+  // リアルタイム通信
+  { id: 'java-websocket', name: 'Java WebSocket', category: 'realtime', language: 'java', description: 'Java標準WebSocket', packageName: 'jakarta.websocket', officialUrl: 'https://jakarta.ee/', features: ['標準', 'アノテーション'] },
+  { id: 'java-spring-websocket', name: 'Spring WebSocket', category: 'realtime', language: 'java', description: 'Spring WebSocket', packageName: 'org.springframework.websocket', officialUrl: 'https://spring.io/', features: ['STOMP', 'SockJS'] },
+  
+  // PDF操作
+  { id: 'java-itext', name: 'iText', category: 'pdf', language: 'java', description: 'PDF生成・操作', packageName: 'com.itextpdf', officialUrl: 'https://itextpdf.com/', features: ['PDF生成', 'フォーム'] },
+  { id: 'java-pdfbox', name: 'Apache PDFBox', category: 'pdf', language: 'java', description: 'PDF操作', packageName: 'org.apache.pdfbox', officialUrl: 'https://pdfbox.apache.org/', features: ['PDF操作', 'テキスト抽出'] },
+  
+  // 動画・音声
+  { id: 'java-jave', name: 'JAVE', category: 'video-audio', language: 'java', description: 'FFmpegラッパー', packageName: 'ws.schild.jave', github: 'https://github.com/a-schild/jave2', features: ['動画変換', '音声変換'] },
+  
+  // ユーティリティ
+  { id: 'java-guava', name: 'Guava', category: 'utility', language: 'java', description: 'Googleユーティリティ', packageName: 'com.google.guava', officialUrl: 'https://github.com/google/guava', features: ['コレクション', 'キャッシュ'] },
+  { id: 'java-lombok', name: 'Lombok', category: 'utility', language: 'java', description: 'ボイラープレート削減', packageName: 'org.projectlombok', officialUrl: 'https://projectlombok.org/', features: ['アノテーション', 'Getter/Setter'] },
+  { id: 'java-commons-lang', name: 'Commons Lang', category: 'utility', language: 'java', description: 'Apacheユーティリティ', packageName: 'org.apache.commons.lang3', officialUrl: 'https://commons.apache.org/proper/commons-lang/', features: ['文字列', '配列'] },
+  
+  // CLI作成
+  { id: 'java-picocli', name: 'picocli', category: 'cli', language: 'java', description: 'CLI作成ライブラリ', packageName: 'info.picocli', officialUrl: 'https://picocli.info/', features: ['アノテーション', 'サブコマンド'] },
+  
+  // グラフ・可視化
+  { id: 'java-jfreechart', name: 'JFreeChart', category: 'chart', language: 'java', description: 'チャートライブラリ', packageName: 'org.jfree.jfreechart', officialUrl: 'https://www.jfree.org/jfreechart/', features: ['チャート', '多種類'] },
 ]
 
 // 言語でフィルターする関数

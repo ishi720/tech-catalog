@@ -265,6 +265,8 @@ const selectedLibrary = ref<Library | null>(null)
 const displayLanguages = [
   { id: 'javascript', name: 'JavaScript', icon: '🟨' },
   { id: 'php', name: 'PHP', icon: '🐘' },
+  { id: 'python', name: 'Python', icon: '🐍' },
+  { id: 'java', name: 'Java', icon: '☕' },
 ]
 
 const getLibsForCell = (language: string, category: string): Library[] => {
@@ -305,6 +307,7 @@ const getLanguageBadgeClass = (language: string): string => {
     javascript: 'bg-yellow-100 text-yellow-800',
     php: 'bg-purple-100 text-purple-800',
     python: 'bg-blue-100 text-blue-800',
+    java: 'bg-red-100 text-red-800',
     ruby: 'bg-red-100 text-red-800',
     multi: 'bg-gray-100 text-gray-800'
   }
