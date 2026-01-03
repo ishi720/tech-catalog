@@ -143,5 +143,93 @@ export const programmingLanguages: ProgrammingLanguage[] = [
     paradigms: ['関数型', '手続き型', '並行処理'],
     officialUrl: 'https://www.rust-lang.org/',
     notes: 'メモリ安全、高性能'
+  },
+  {
+    id: 'r',
+    name: 'R',
+    birthYear: 1993,
+    latestVersion: '4.4.2',
+    extensions: ['.r', '.R'],
+    type: 'インタプリタ',
+    paradigms: ['関数型', 'オブジェクト指向', '統計分析'],
+    officialUrl: 'https://www.r-project.org/',
+    notes: '統計分析、データ可視化に特化'
+  },
+  {
+    id: 'scala',
+    name: 'Scala',
+    birthYear: 2004,
+    latestVersion: '3.6.4',
+    extensions: ['.scala', '.sc'],
+    type: 'コンパイル（JVM）',
+    paradigms: ['オブジェクト指向', '関数型'],
+    officialUrl: 'https://www.scala-lang.org/',
+    notes: 'JVM上の関数型言語'  
+  },
+  {
+    id: 'perl',
+    name: 'Perl',
+    birthYear: 1987,
+    latestVersion: '5.38.0',
+    extensions: ['.pl', '.pm'],
+    type: 'インタプリタ',
+    paradigms: ['手続き型', 'オブジェクト指向', '関数型'],
+    officialUrl: 'https://www.perl.org/',
+    notes: 'テキスト処理向け'
+  },
+  {
+    id: 'lua',
+    name: 'Lua',
+    birthYear: 1993,
+    latestVersion: '5.4.6',
+    extensions: ['.lua'],
+    type: 'インタプリタ',
+    paradigms: ['手続き型', 'オブジェクト指向', '関数型'],
+    officialUrl: 'https://www.lua.org/',
+    notes: '組み込み用軽量言語'
+  },
+  {
+    id: 'haskell',
+    name: 'Haskell',
+    birthYear: 1990,
+    latestVersion: '9.4.5',
+    extensions: ['.hs', '.lhs'],
+    type: 'コンパイル',
+    paradigms: ['関数型', '遅延評価'],
+    officialUrl: 'https://www.haskell.org/',
+    notes: '純粋関数型言語'
+  },
+  {
+    id: 'dart',
+    name: 'Dart',
+    birthYear: 2011,
+    latestVersion: '3.11',
+    extensions: ['.dart'],
+    type: 'コンパイル（AOT/JIT）',
+    paradigms: ['オブジェクト指向', '関数型'],
+    officialUrl: 'https://dart.dev/',
+    notes: 'Flutterの主要言語'
+  },
+  {
+    id: 'cobol',
+    name: 'COBOL',
+    birthYear: 1959,
+    latestVersion: '2014',
+    extensions: ['.cob', '.cbl'],
+    type: 'コンパイル',
+    paradigms: ['手続き型', 'オブジェクト指向'],
+    officialUrl: '',
+    notes: 'ビジネス・金融向け'
+  },
+  {
+    id: 'lisp',
+    name: 'Lisp',
+    birthYear: 1958,
+    latestVersion: '2.4',
+    extensions: ['.lisp', '.lsp'],
+    type: 'インタプリタ',
+    paradigms: ['関数型', 'マクロ'],
+    officialUrl: 'https://lisp-lang.org/',
+    notes: '関数型言語の祖先'
   }
 ]
