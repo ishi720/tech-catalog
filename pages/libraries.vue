@@ -42,6 +42,7 @@
         <option value="ruby">Ruby</option>
         <option value="r">R</option>
         <option value="go">Go</option>
+        <option value="csharp">C#</option>
       </select>
 
       <!-- Category Filter (List view) -->
@@ -270,7 +271,8 @@ const displayLanguages = [
   { id: 'java', name: 'Java' },
   { id: 'ruby', name: 'Ruby' },
   { id: 'r', name: 'R' },
-  { id: 'go', name: 'Go' }
+  { id: 'go', name: 'Go' },
+  { id: 'csharp', name: 'C#' }
 ]
 
 const getLibsForCell = (language: string, category: string): Library[] => {
@@ -295,6 +297,7 @@ const openLibraryDetail = (lib: Library) => {
   selectedLibrary.value = lib
 }
 
+// ヘルパー関数
 const getLanguageDisplayName = (language: string): string => {
   const names: Record<string, string> = {
     javascript: 'JavaScript',
@@ -304,12 +307,14 @@ const getLanguageDisplayName = (language: string): string => {
     java: 'Java',
     r: 'R',
     go: 'Go',
+    csharp: 'C#',
     cobol: 'COBOL',
     multi: 'JavaScript'
   }
   return names[language] || language
 }
 
+// ラベルとバッジのクラス名を取得
 const getLanguageLabel = (language: string): string => {
   const labels: Record<string, string> = {
     javascript: 'JavaScript',
@@ -319,6 +324,7 @@ const getLanguageLabel = (language: string): string => {
     java: 'Java',
     r: 'R',
     go: 'Go',
+    csharp: 'C#',
     cobol: 'COBOL',
     multi: '複数言語'
   }

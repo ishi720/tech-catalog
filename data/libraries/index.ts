@@ -8,6 +8,7 @@ import { javaLibraries } from './java'
 import { rubyLibraries } from './ruby'
 import { rLibraries } from './r'
 import { goLibraries } from './go'
+import { csharpLibraries } from './csharp'
 
 // カテゴリ情報
 export const libraryCategories: LibraryCategoryInfo[] = [
@@ -47,6 +48,7 @@ export const libraries: Library[] = [
   ...rubyLibraries,
   ...rLibraries,
   ...goLibraries,
+  ...csharpLibraries
 ]
 
 // 言語でフィルターする関数
@@ -91,3 +93,4 @@ export { javaLibraries }
 export { rubyLibraries }
 export { rLibraries }
 export { goLibraries }
+export { csharpLibraries }
