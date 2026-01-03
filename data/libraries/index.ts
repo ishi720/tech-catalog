@@ -7,6 +7,7 @@ import { pythonLibraries } from './python'
 import { javaLibraries } from './java'
 import { rubyLibraries } from './ruby'
 import { rLibraries } from './r'
+import { goLibraries } from './go'
 
 // カテゴリ情報
 export const libraryCategories: LibraryCategoryInfo[] = [
@@ -45,6 +46,7 @@ export const libraries: Library[] = [
   ...javaLibraries,
   ...rubyLibraries,
   ...rLibraries,
+  ...goLibraries,
 ]
 
 // 言語でフィルターする関数
@@ -88,3 +90,4 @@ export { pythonLibraries }
 export { javaLibraries }
 export { rubyLibraries }
 export { rLibraries }
+export { goLibraries }

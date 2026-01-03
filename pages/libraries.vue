@@ -41,6 +41,7 @@
         <option value="java">Java</option>
         <option value="ruby">Ruby</option>
         <option value="r">R</option>
+        <option value="go">Go</option>
       </select>
 
       <!-- Category Filter (List view) -->
@@ -273,6 +274,7 @@ const displayLanguages = [
   { id: 'java', name: 'Java', icon: '☕' },
   { id: 'ruby', name: 'Ruby', icon: '💎' },
   { id: 'r', name: 'R', icon: '📊' },
+  { id: 'go', name: 'Go', icon: '🐹' }
 ]
 
 const getLibsForCell = (language: string, category: string): Library[] => {
@@ -305,6 +307,7 @@ const getLanguageLabel = (language: string): string => {
     ruby: 'Ruby',
     java: 'Java',
     r: 'R',
+    go: 'Go',
     cobol: 'COBOL',
     multi: '複数言語'
   }
@@ -319,6 +322,7 @@ const getLanguageBadgeClass = (language: string): string => {
     java: 'bg-red-100 text-red-800',
     ruby: 'bg-red-100 text-red-800',
     r: 'bg-gray-100 text-gray-800',
+    go: 'bg-blue-100 text-blue-800',
     cobol: 'bg-gray-100 text-gray-800'
   }
   return classes[language] || 'bg-gray-100 text-gray-800'
