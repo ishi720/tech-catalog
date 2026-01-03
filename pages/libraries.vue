@@ -27,7 +27,7 @@
           📋 リスト表示
         </button>
       </div>
-      
+
       <!-- Language Filter (List view) -->
       <select
         v-if="viewMode === 'list'"
@@ -37,8 +37,12 @@
         <option value="">すべての言語</option>
         <option value="javascript">JavaScript</option>
         <option value="php">PHP</option>
+        <option value="python">Python</option>
+        <option value="java">Java</option>
+        <option value="ruby">Ruby</option>
+        <option value="r">R</option>
       </select>
-      
+
       <!-- Category Filter (List view) -->
       <select
         v-if="viewMode === 'list'"
@@ -115,7 +119,7 @@
       >
         <div class="flex items-start justify-between mb-2">
           <h3 class="font-bold text-gray-900">{{ lib.name }}</h3>
-          <span 
+          <span
             class="px-2 py-0.5 text-xs rounded-full"
             :class="getLanguageBadgeClass(lib.language)"
           >
@@ -159,7 +163,7 @@
               <div>
                 <h2 class="text-2xl font-bold text-gray-900">{{ selectedLibrary.name }}</h2>
                 <div class="flex items-center gap-2 mt-1">
-                  <span 
+                  <span
                     class="px-2 py-0.5 text-xs rounded-full"
                     :class="getLanguageBadgeClass(selectedLibrary.language)"
                   >
@@ -267,6 +271,8 @@ const displayLanguages = [
   { id: 'php', name: 'PHP', icon: '🐘' },
   { id: 'python', name: 'Python', icon: '🐍' },
   { id: 'java', name: 'Java', icon: '☕' },
+  { id: 'ruby', name: 'Ruby', icon: '💎' },
+  { id: 'r', name: 'R', icon: '📊' },
 ]
 
 const getLibsForCell = (language: string, category: string): Library[] => {
@@ -275,15 +281,15 @@ const getLibsForCell = (language: string, category: string): Library[] => {
 
 const filteredLibraries = computed(() => {
   let result = [...libraries]
-  
+
   if (selectedLanguage.value) {
     result = result.filter(lib => lib.language === selectedLanguage.value)
   }
-  
+
   if (selectedCategory.value) {
     result = result.filter(lib => lib.category === selectedCategory.value)
   }
-  
+
   return result.sort((a, b) => a.name.localeCompare(b.name))
 })
 
@@ -297,6 +303,9 @@ const getLanguageLabel = (language: string): string => {
     php: 'PHP',
     python: 'Python',
     ruby: 'Ruby',
+    java: 'Java',
+    r: 'R',
+    cobol: 'COBOL',
     multi: '複数言語'
   }
   return labels[language] || language
@@ -309,7 +318,8 @@ const getLanguageBadgeClass = (language: string): string => {
     python: 'bg-blue-100 text-blue-800',
     java: 'bg-red-100 text-red-800',
     ruby: 'bg-red-100 text-red-800',
-    multi: 'bg-gray-100 text-gray-800'
+    r: 'bg-gray-100 text-gray-800',
+    cobol: 'bg-gray-100 text-gray-800'
   }
   return classes[language] || 'bg-gray-100 text-gray-800'
 }

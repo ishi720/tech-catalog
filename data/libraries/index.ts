@@ -5,6 +5,8 @@ import { phpLibraries } from './php'
 import { jsLibraries } from './javascript'
 import { pythonLibraries } from './python'
 import { javaLibraries } from './java'
+import { rubyLibraries } from './ruby'
+import { rLibraries } from './r'
 
 // カテゴリ情報
 export const libraryCategories: LibraryCategoryInfo[] = [
@@ -41,6 +43,8 @@ export const libraries: Library[] = [
   ...jsLibraries,
   ...pythonLibraries,
   ...javaLibraries,
+  ...rubyLibraries,
+  ...rLibraries,
 ]
 
 // 言語でフィルターする関数
@@ -82,3 +86,5 @@ export { phpLibraries }
 export { jsLibraries }
 export { pythonLibraries }
 export { javaLibraries }
+export { rubyLibraries }
+export { rLibraries }

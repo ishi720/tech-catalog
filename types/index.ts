@@ -58,7 +58,7 @@ export interface Library {
   id: string
   name: string
   category: LibraryCategory
-  language: 'javascript' | 'php' | 'python' | 'ruby' | 'java' | 'go' | 'rust' | 'csharp' | 'multi'
+  language: 'javascript' | 'php' | 'python' | 'ruby' | 'java' | 'go' | 'rust' | 'csharp' | 'r' | 'cobol' | 'multi'
   description: string
   latestVersion?: string
   officialUrl?: string
