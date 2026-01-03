@@ -4,6 +4,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ['@nuxtjs/tailwindcss'],
   app: {
+    baseURL: '/tech-catalog/',
     head: {
       title: 'Tech Catalog - 技術情報まとめ',
       meta: [
