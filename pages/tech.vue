@@ -59,7 +59,7 @@
         >
           <div class="flex items-start justify-between mb-3">
             <div class="flex items-center gap-3">
-              <span class="text-2xl">{{ getLanguageIcon(lang.name) }}</span>
+              <TechIcon :name="lang.name" size="2rem" />
               <div>
                 <h3 class="font-bold text-lg text-gray-900">{{ lang.name }}</h3>
                 <p class="text-sm text-gray-500">{{ lang.birthYear }}年〜</p>
@@ -100,7 +100,7 @@
         >
           <div class="flex items-start justify-between mb-3">
             <div class="flex items-center gap-3">
-              <span class="text-2xl">{{ getDbIcon(db.name) }}</span>
+              <TechIcon :name="db.name" size="2rem" />
               <div>
                 <h3 class="font-bold text-lg text-gray-900">{{ db.name }}</h3>
                 <p class="text-sm text-gray-500">{{ db.birthYear }}年〜</p>
@@ -141,7 +141,7 @@
         >
           <div class="flex items-start justify-between mb-3">
             <div class="flex items-center gap-3">
-              <span class="text-2xl">{{ getFrameworkIcon(fw.name) }}</span>
+              <TechIcon :name="fw.name" size="2rem" />
               <div>
                 <h3 class="font-bold text-lg text-gray-900">{{ fw.name }}</h3>
                 <p class="text-sm text-gray-500">{{ fw.birthYear }}年〜</p>
@@ -177,7 +177,7 @@
         >
           <div class="flex items-start justify-between mb-3">
             <div class="flex items-center gap-3">
-              <span class="text-2xl">{{ getToolIcon(tool.name) }}</span>
+              <TechIcon :name="tool.name" size="2rem" />
               <div>
                 <h3 class="font-bold text-lg text-gray-900">{{ tool.name }}</h3>
                 <p class="text-sm text-gray-500">{{ tool.license }}</p>
@@ -266,43 +266,12 @@ const filteredItems = computed(() => {
   return items
 })
 
-// Icon helpers
-const getLanguageIcon = (name: string): string => {
-  const icons: Record<string, string> = {
-    'Python': '🐍', 'JavaScript': '🟨', 'TypeScript': '📘', 'Java': '☕',
-    'C': '🔷', 'C++': '➕', 'C#': '🟣', 'Ruby': '💎', 'PHP': '🐘',
-    'Swift': '🦅', 'Kotlin': '🟠', 'Go': '🐹', 'Rust': '🦀'
-  }
-  return icons[name] || '📄'
-}
-
-const getDbIcon = (name: string): string => {
-  const icons: Record<string, string> = {
-    'MySQL': '🐬', 'PostgreSQL': '🐘', 'MariaDB': '🦭', 'SQLite': '📦',
-    'Oracle Database': '🔶', 'Microsoft SQL Server': '🔷', 'IBM Db2': '🔵',
-    'MongoDB': '🍃', 'CouchDB': '🛋️', 'Redis': '🔴', 'Elasticsearch': '🔎',
-    'Apache Cassandra': '👁️', 'Neo4j': '🕸️'
-  }
-  return icons[name] || '🗄️'
-}
-
 const getDbBadgeClass = (type: string): string => {
   if (type.includes('RDBMS')) return 'bg-blue-100 text-blue-700'
   if (type.includes('ドキュメント')) return 'bg-green-100 text-green-700'
   if (type.includes('KVS') || type.includes('インメモリ')) return 'bg-orange-100 text-orange-700'
   if (type.includes('グラフ')) return 'bg-purple-100 text-purple-700'
   return 'bg-gray-100 text-gray-700'
-}
-
-const getFrameworkIcon = (name: string): string => {
-  const icons: Record<string, string> = {
-    'React': '⚛️', 'Vue.js': '💚', 'Angular': '🅰️', 'Svelte': '🧡',
-    'Next.js': '▲', 'Nuxt': '💚', 'Remix': '💿', 'Express.js': '🚂',
-    'NestJS': '🐱', 'FastAPI': '⚡', 'Django': '🎸', 'Ruby on Rails': '💎',
-    'Spring Boot': '🍃', 'Laravel': '🔺', 'React Native': '📱', 'Flutter': '🦋',
-    'Tailwind CSS': '🎨', 'Bootstrap': '🅱️', 'Jest': '🃏', 'Vitest': '⚡', 'pytest': '🧪'
-  }
-  return icons[name] || '🏗️'
 }
 
 const getFwCategoryLabel = (category: string): string => {
@@ -320,17 +289,6 @@ const getFwBadgeClass = (category: string): string => {
     'css': 'bg-pink-100 text-pink-700', 'testing': 'bg-gray-100 text-gray-700'
   }
   return classes[category] || 'bg-gray-100 text-gray-700'
-}
-
-const getToolIcon = (name: string): string => {
-  const icons: Record<string, string> = {
-    'Visual Studio Code': '💎', 'IntelliJ IDEA': '🧠', 'WebStorm': '⚡', 'Cursor': '🤖',
-    'Neovim': '📝', 'Git': '🔀', 'GitHub': '🐙', 'GitLab': '🦊',
-    'GitHub Actions': '⚡', 'Jenkins': '🎩', 'CircleCI': '⭕', 'Docker': '🐳',
-    'Kubernetes': '☸️', 'npm': '📦', 'pnpm': '🎯', 'Yarn': '🧶', 'pip': '📦',
-    'Vite': '⚡', 'webpack': '📦', 'Turbopack': '🚀'
-  }
-  return icons[name] || '🛠️'
 }
 
 const getToolCategoryLabel = (category: string): string => {

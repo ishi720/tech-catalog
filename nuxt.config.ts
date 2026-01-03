@@ -13,7 +13,9 @@ export default defineNuxtConfig({
         { name: 'description', content: '技術情報カタログ - プログラミング言語、データベース、フレームワーク、開発ツール' }
       ],
       link: [
-        { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }
+        { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+        // Devicon - プログラミング言語アイコン
+        { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css' }
       ]
     }
   }

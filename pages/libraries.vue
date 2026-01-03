@@ -81,7 +81,7 @@
           <tr v-for="lang in displayLanguages" :key="lang.id" class="hover:bg-gray-50">
             <td class="sticky left-0 bg-white px-4 py-3 font-medium text-gray-900 border-b border-r z-10">
               <div class="flex items-center gap-2">
-                <span>{{ lang.icon }}</span>
+                <TechIcon :name="lang.name" size="1.25rem" />
                 <span>{{ lang.name }}</span>
               </div>
             </td>
@@ -120,12 +120,10 @@
       >
         <div class="flex items-start justify-between mb-2">
           <h3 class="font-bold text-gray-900">{{ lib.name }}</h3>
-          <span
-            class="px-2 py-0.5 text-xs rounded-full"
-            :class="getLanguageBadgeClass(lib.language)"
-          >
-            {{ getLanguageLabel(lib.language) }}
-          </span>
+          <div class="flex items-center gap-1.5 px-2 py-0.5 text-xs rounded-full" :class="getLanguageBadgeClass(lib.language)">
+            <TechIcon :name="getLanguageDisplayName(lib.language)" size="0.875rem" />
+            <span>{{ getLanguageLabel(lib.language) }}</span>
+          </div>
         </div>
         <p class="text-sm text-gray-600 mb-3 line-clamp-2">{{ lib.description }}</p>
         <div class="flex items-center gap-2">
@@ -164,12 +162,10 @@
               <div>
                 <h2 class="text-2xl font-bold text-gray-900">{{ selectedLibrary.name }}</h2>
                 <div class="flex items-center gap-2 mt-1">
-                  <span
-                    class="px-2 py-0.5 text-xs rounded-full"
-                    :class="getLanguageBadgeClass(selectedLibrary.language)"
-                  >
-                    {{ getLanguageLabel(selectedLibrary.language) }}
-                  </span>
+                  <div class="flex items-center gap-1.5 px-2 py-0.5 text-xs rounded-full" :class="getLanguageBadgeClass(selectedLibrary.language)">
+                    <TechIcon :name="getLanguageDisplayName(selectedLibrary.language)" size="0.875rem" />
+                    <span>{{ getLanguageLabel(selectedLibrary.language) }}</span>
+                  </div>
                   <span class="text-sm text-gray-500">
                     {{ getCategoryIcon(selectedLibrary.category) }} {{ getCategoryName(selectedLibrary.category) }}
                   </span>
@@ -268,13 +264,13 @@ const selectedCategory = ref('')
 const selectedLibrary = ref<Library | null>(null)
 
 const displayLanguages = [
-  { id: 'javascript', name: 'JavaScript', icon: '🟨' },
-  { id: 'php', name: 'PHP', icon: '🐘' },
-  { id: 'python', name: 'Python', icon: '🐍' },
-  { id: 'java', name: 'Java', icon: '☕' },
-  { id: 'ruby', name: 'Ruby', icon: '💎' },
-  { id: 'r', name: 'R', icon: '📊' },
-  { id: 'go', name: 'Go', icon: '🐹' }
+  { id: 'javascript', name: 'JavaScript' },
+  { id: 'php', name: 'PHP' },
+  { id: 'python', name: 'Python' },
+  { id: 'java', name: 'Java' },
+  { id: 'ruby', name: 'Ruby' },
+  { id: 'r', name: 'R' },
+  { id: 'go', name: 'Go' }
 ]
 
 const getLibsForCell = (language: string, category: string): Library[] => {
@@ -297,6 +293,21 @@ const filteredLibraries = computed(() => {
 
 const openLibraryDetail = (lib: Library) => {
   selectedLibrary.value = lib
+}
+
+const getLanguageDisplayName = (language: string): string => {
+  const names: Record<string, string> = {
+    javascript: 'JavaScript',
+    php: 'PHP',
+    python: 'Python',
+    ruby: 'Ruby',
+    java: 'Java',
+    r: 'R',
+    go: 'Go',
+    cobol: 'COBOL',
+    multi: 'JavaScript'
+  }
+  return names[language] || language
 }
 
 const getLanguageLabel = (language: string): string => {
@@ -322,7 +333,7 @@ const getLanguageBadgeClass = (language: string): string => {
     java: 'bg-red-100 text-red-800',
     ruby: 'bg-red-100 text-red-800',
     r: 'bg-gray-100 text-gray-800',
-    go: 'bg-blue-100 text-blue-800',
+    go: 'bg-cyan-100 text-cyan-800',
     cobol: 'bg-gray-100 text-gray-800'
   }
   return classes[language] || 'bg-gray-100 text-gray-800'

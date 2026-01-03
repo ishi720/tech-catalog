@@ -87,8 +87,14 @@
             </div>
           </div>
           <div class="flex flex-wrap gap-2">
-            <span class="px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-sm">🟨 JavaScript</span>
-            <span class="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm">🐘 PHP</span>
+            <div class="flex items-center gap-1 px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-sm">
+              <TechIcon name="JavaScript" size="1rem" />
+              <span>JavaScript</span>
+            </div>
+            <div class="flex items-center gap-1 px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm">
+              <TechIcon name="PHP" size="1rem" />
+              <span>PHP</span>
+            </div>
           </div>
           <div class="mt-4 text-primary-600 font-medium flex items-center gap-1">
             詳細を見る <span>→</span>
