@@ -64,24 +64,25 @@ const iconMap: Record<string, string> = {
 
   // データベース
   'MySQL': 'devicon-mysql-original',
-  'PostgreSQL': 'devicon-postgresql-original',
+  'PostgreSQL': 'devicon-postgresql-plain',
   'MariaDB': 'devicon-mariadb-original',
-  'SQLite': 'devicon-sqlite-original',
+  'SQLite': 'devicon-sqlite-plain',
   'Oracle Database': 'devicon-oracle-original',
   'Microsoft SQL Server': 'devicon-microsoftsqlserver-original',
   'IBM Db2': 'devicon-db2-original',
-  'MongoDB': 'devicon-mongodb-original',
+  'MongoDB': 'devicon-mongodb-plain',
   'CouchDB': 'devicon-couchdb-plain',
-  'Redis': 'devicon-redis-original',
+  'Redis': 'devicon-redis-plain',
   'Elasticsearch': 'devicon-elasticsearch-plain-wordmark',
   'Apache Cassandra': 'devicon-cassandra-original',
-  'Neo4j': 'devicon-neo4j-original',
+  'Neo4j': 'devicon-neo4j-plain',
   'DuckDB': 'devicon-duckdb-plain',
+  'Supabase': 'devicon-supabase-plain',
   
   // フレームワーク
   'React': 'devicon-react-original',
   'Vue.js': 'devicon-vuejs-original',
-  'Angular': 'devicon-angular-original',
+  'Angular': 'devicon-angularjs-plain',
   'Svelte': 'devicon-svelte-original',
   'Next.js': 'devicon-nextjs-original',
   'Nuxt': 'devicon-nuxtjs-original',
@@ -122,6 +123,14 @@ const iconMap: Record<string, string> = {
   'Vite': 'devicon-vitejs-original',
   'webpack': 'devicon-webpack-original',
   'Turbopack': 'devicon-nextjs-original',
+
+  // ライブラリ
+  'NumPy': 'devicon-numpy-plain',
+  'Pandas': 'devicon-pandas-plain',
+  'Lodash': 'devicon-lodash-plain',
+  'TensorFlow': 'devicon-tensorflow-original',
+  'PyTorch': 'devicon-pytorch-original',
+  'Axios': 'devicon-axios-plain',  
 }
 
 const iconClass = computed(() => iconMap[props.name] || null)
