@@ -26,20 +26,6 @@ export interface Database {
   icon?: string
 }
 
-// フレームワーク
-export interface Framework {
-  id: string
-  name: string
-  category: 'frontend' | 'backend' | 'fullstack' | 'mobile' | 'css' | 'testing' | 'other'
-  language: string
-  latestVersion: string
-  birthYear: number
-  officialUrl: string
-  stars?: number
-  notes?: string
-  icon?: string
-}
-
 // 開発ツール
 export interface DevTool {
   id: string
