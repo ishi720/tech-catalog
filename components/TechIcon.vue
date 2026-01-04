@@ -4,7 +4,6 @@
     :class="[iconClass, coloredClass]" 
     :style="{ fontSize: size }"
   ></i>
-  <span v-else :style="{ fontSize: size }">{{ fallbackEmoji }}</span>
 </template>
 
 <script setup lang="ts">
@@ -118,32 +117,6 @@ const iconMap: Record<string, string> = {
   'Turbopack': 'devicon-nextjs-original',
 }
 
-// 絵文字フォールバック
-const emojiMap: Record<string, string> = {
-  'Python': '🐍',
-  'JavaScript': '🟨',
-  'TypeScript': '📘',
-  'Java': '☕',
-  'C': '🔷',
-  'C++': '➕',
-  'C#': '🟣',
-  'Ruby': '💎',
-  'PHP': '🐘',
-  'Swift': '🦅',
-  'Kotlin': '🟠',
-  'Go': '🐹',
-  'Rust': '🦀',
-  'R': '📊',
-  'Scala': '🔴',
-  'Perl': '🐪',
-  'Lua': '🌙',
-  'Haskell': 'λ',
-  'Dart': '🎯',
-  'COBOL': '💼',
-  'Lisp': '🔗',
-}
-
 const iconClass = computed(() => iconMap[props.name] || null)
 const coloredClass = computed(() => props.colored ? 'colored' : '')
-const fallbackEmoji = computed(() => emojiMap[props.name] || '📄')
 </script>
