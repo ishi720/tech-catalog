@@ -11,23 +11,6 @@
 
     <!-- View Toggle -->
     <div class="flex items-center gap-4 mb-6">
-      <div class="flex bg-gray-100 rounded-lg p-1">
-        <button
-          @click="viewMode = 'matrix'"
-          class="px-4 py-2 rounded-md text-sm font-medium transition-colors"
-          :class="viewMode === 'matrix' ? 'bg-white shadow text-primary-600' : 'text-gray-600 hover:text-gray-900'"
-        >
-          📊 マトリックス表示
-        </button>
-        <button
-          @click="viewMode = 'list'"
-          class="px-4 py-2 rounded-md text-sm font-medium transition-colors"
-          :class="viewMode === 'list' ? 'bg-white shadow text-primary-600' : 'text-gray-600 hover:text-gray-900'"
-        >
-          📋 リスト表示
-        </button>
-      </div>
-
       <!-- Language Filter (List view) -->
       <select
         v-if="viewMode === 'list'"
@@ -109,38 +92,6 @@
           </tr>
         </tbody>
       </table>
-    </div>
-
-    <!-- List View -->
-    <div v-else class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-      <div
-        v-for="lib in filteredLibraries"
-        :key="lib.id"
-        @click="openLibraryDetail(lib)"
-        class="bg-white rounded-xl shadow-sm border p-4 hover:shadow-md hover:border-primary-200 transition-all cursor-pointer"
-      >
-        <div class="flex items-start justify-between mb-2">
-          <h3 class="font-bold text-gray-900">{{ lib.name }}</h3>
-          <div class="flex items-center gap-1.5 px-2 py-0.5 text-xs rounded-full" :class="getLanguageBadgeClass(lib.language)">
-            <TechIcon :name="getLanguageDisplayName(lib.language)" size="0.875rem" />
-            <span>{{ getLanguageLabel(lib.language) }}</span>
-          </div>
-        </div>
-        <p class="text-sm text-gray-600 mb-3 line-clamp-2">{{ lib.description }}</p>
-        <div class="flex items-center gap-2">
-          <span class="text-lg">{{ getCategoryIcon(lib.category) }}</span>
-          <span class="text-xs text-gray-500">{{ getCategoryName(lib.category) }}</span>
-        </div>
-        <div v-if="lib.features && lib.features.length > 0" class="mt-2 flex flex-wrap gap-1">
-          <span
-            v-for="feature in lib.features.slice(0, 3)"
-            :key="feature"
-            class="px-1.5 py-0.5 text-xs bg-gray-100 text-gray-600 rounded"
-          >
-            {{ feature }}
-          </span>
-        </div>
-      </div>
     </div>
 
     <!-- Empty State -->
