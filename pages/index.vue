@@ -27,10 +27,6 @@
             <div class="text-sm text-gray-500 mt-1">データベース</div>
           </div>
           <div class="text-center">
-            <div class="text-3xl font-bold text-purple-600">{{ stats.frameworks }}</div>
-            <div class="text-sm text-gray-500 mt-1">フレームワーク</div>
-          </div>
-          <div class="text-center">
             <div class="text-3xl font-bold text-orange-600">{{ stats.devtools }}</div>
             <div class="text-sm text-gray-500 mt-1">開発ツール</div>
           </div>
@@ -128,12 +124,11 @@
 </template>
 
 <script setup lang="ts">
-import { programmingLanguages, databases, frameworks, devTools, libraries, libraryCategories } from '~/data'
+import { programmingLanguages, databases, devTools, libraries, libraryCategories } from '~/data'
 
 const stats = computed(() => ({
   languages: programmingLanguages.length,
   databases: databases.length,
-  frameworks: frameworks.length,
   devtools: devTools.length,
   libraries: libraries.length
 }))

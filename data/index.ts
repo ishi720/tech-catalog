@@ -1,6 +1,5 @@
 export { programmingLanguages } from './languages'
 export { databases } from './databases'
-export { frameworks } from './frameworks'
 export { devTools } from './devtools'
 export { libraries, libraryCategories, getLibraryMatrix } from './libraries'
 
@@ -22,14 +21,6 @@ export const categories: Category[] = [
     description: 'RDBMS、NoSQL等のデータベース',
     icon: '🗄️',
     color: 'bg-green-500'
-  },
-  {
-    id: 'frameworks',
-    name: 'Frameworks',
-    nameJa: 'フレームワーク',
-    description: 'Web、モバイル等のフレームワーク',
-    icon: '🏗️',
-    color: 'bg-purple-500'
   },
   {
     id: 'devtools',

@@ -164,42 +164,6 @@
         </div>
       </template>
 
-      <!-- Frameworks -->
-      <template v-if="activeTab === 'frameworks'">
-        <div
-          v-for="fw in paginatedItems"
-          :key="fw.id"
-          class="bg-white rounded-xl shadow-sm border p-5 hover:shadow-md hover:border-primary-200 transition-all"
-        >
-          <div class="flex items-start justify-between mb-3">
-            <div class="flex items-center gap-3">
-              <TechIcon :name="fw.name" size="2rem" />
-              <div>
-                <h3 class="font-bold text-lg text-gray-900">{{ fw.name }}</h3>
-                <p class="text-sm text-gray-500">{{ fw.birthYear }}年〜</p>
-              </div>
-            </div>
-            <span class="px-2 py-1 text-xs font-medium rounded-full" :class="getFwBadgeClass(fw.category)">
-              {{ getFwCategoryLabel(fw.category) }}
-            </span>
-          </div>
-          <div class="space-y-1.5 text-sm">
-            <p class="flex items-center gap-2">
-              <span class="text-gray-400 w-20 shrink-0">バージョン</span>
-              <span class="text-gray-700 font-mono text-sm">{{ fw.latestVersion }}</span>
-            </p>
-            <p class="flex items-center gap-2">
-              <span class="text-gray-400 w-20 shrink-0">言語</span>
-              <span class="text-gray-700">{{ fw.language }}</span>
-            </p>
-          </div>
-          <p v-if="fw.notes" class="mt-3 text-sm text-gray-600">{{ fw.notes }}</p>
-          <a :href="fw.officialUrl" target="_blank" rel="noopener" class="mt-3 inline-flex items-center gap-1 text-sm text-primary-600 hover:text-primary-700 font-medium">
-            公式サイト <span class="text-xs">↗</span>
-          </a>
-        </div>
-      </template>
-
       <!-- Dev Tools -->
       <template v-if="activeTab === 'devtools'">
         <div
@@ -244,8 +208,14 @@
           @click="openLibraryDetail(lib)"
           class="bg-white rounded-xl shadow-sm border p-4 hover:shadow-md hover:border-primary-200 transition-all cursor-pointer"
         >
-          <div class="flex items-start justify-between mb-2">
-            <h3 class="font-bold text-gray-900">{{ lib.name }}</h3>
+          <div class="flex items-start justify-between mb-3">
+            <div class="flex items-center gap-3">
+              <TechIcon :name="lib.name" size="2rem" />
+              <div>
+                <h3 class="font-bold text-lg text-gray-900">{{ lib.name }}</h3>
+                <p class="text-sm text-gray-500">{{ lib.license }}</p>
+              </div>
+            </div>
             <div class="flex items-center gap-1.5 px-2 py-0.5 text-xs rounded-full" :class="getLanguageBadgeClass(lib.language)">
               <TechIcon :name="getLanguageDisplayName(lib.language)" size="0.875rem" />
               <span>{{ getLanguageLabel(lib.language) }}</span>
@@ -420,7 +390,7 @@
 </template>
 
 <script setup lang="ts">
-import { programmingLanguages, databases, frameworks, devTools, libraries, libraryCategories } from '~/data'
+import { programmingLanguages, databases, devTools, libraries, libraryCategories } from '~/data'
 import type { Library, LibraryCategory } from '~/types'
 
 const activeTab = ref('languages')
@@ -442,7 +412,6 @@ watch([activeTab, search, sortBy, selectedLanguage, selectedCategory, itemsPerPa
 const tabs = computed(() => [
   { id: 'languages', name: 'プログラミング言語', icon: '💻', count: programmingLanguages.length },
   { id: 'databases', name: 'データベース', icon: '🗄️', count: databases.length },
-  { id: 'frameworks', name: 'フレームワーク', icon: '🏗️', count: frameworks.length },
   { id: 'devtools', name: '開発ツール', icon: '🛠️', count: devTools.length },
   { id: 'libraries', name: 'ライブラリ', icon: '📚', count: libraries.length },
 ])
@@ -456,9 +425,6 @@ const filteredItems = computed(() => {
       break
     case 'databases':
       items = [...databases]
-      break
-    case 'frameworks':
-      items = [...frameworks]
       break
     case 'devtools':
       items = [...devTools]
