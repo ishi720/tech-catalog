@@ -43,8 +43,19 @@ const iconMap: Record<string, string> = {
   'Haskell': 'devicon-haskell-plain',
   'Dart': 'devicon-dart-plain',
   'COBOL': 'devicon-cobol-original',
-  'Lisp': '',
-  
+  'CoffeeScript': 'devicon-coffeescript-original',
+  'GraphQL': 'devicon-graphql-plain',
+  'Groovy': 'devicon-groovy-plain',
+  'Elixir': 'devicon-elixir-plain',
+  'Erlang': 'devicon-erlang-plain',
+  'Julia': 'devicon-julia-plain',
+  'PowerShell': 'devicon-powershell-plain',
+  'F#': 'devicon-fsharp-plain',
+  'Carbon': 'devicon-carbon-original',
+  'CSS': 'devicon-css3-plain',
+  'HTML': 'devicon-html5-plain',
+  'Shell (Bash)': 'devicon-bash-plain',
+
   // データベース
   'MySQL': 'devicon-mysql-original',
   'PostgreSQL': 'devicon-postgresql-original',
@@ -54,11 +65,12 @@ const iconMap: Record<string, string> = {
   'Microsoft SQL Server': 'devicon-microsoftsqlserver-original',
   'IBM Db2': 'devicon-db2-original',
   'MongoDB': 'devicon-mongodb-original',
-  'CouchDB': 'devicon-couchdb-original',
+  'CouchDB': 'devicon-couchdb-plain',
   'Redis': 'devicon-redis-original',
-  'Elasticsearch': 'devicon-elasticsearch-original',
+  'Elasticsearch': 'devicon-elasticsearch-plain-wordmark',
   'Apache Cassandra': 'devicon-cassandra-original',
   'Neo4j': 'devicon-neo4j-original',
+  'DuckDB': 'devicon-duckdb-plain',
   
   // フレームワーク
   'React': 'devicon-react-original',
@@ -87,7 +99,7 @@ const iconMap: Record<string, string> = {
   'Visual Studio Code': 'devicon-vscode-original',
   'IntelliJ IDEA': 'devicon-intellij-original',
   'WebStorm': 'devicon-webstorm-original',
-  'Cursor': 'devicon-vscode-original', // CursorはVSCodeベースなので
+  'Cursor': 'devicon-vscode-original',
   'Neovim': 'devicon-neovim-original',
   'Git': 'devicon-git-original',
   'GitHub': 'devicon-github-original',
@@ -103,7 +115,7 @@ const iconMap: Record<string, string> = {
   'pip': 'devicon-python-original',
   'Vite': 'devicon-vitejs-original',
   'webpack': 'devicon-webpack-original',
-  'Turbopack': 'devicon-nextjs-original', // TurbopackはNext.jsの一部
+  'Turbopack': 'devicon-nextjs-original',
 }
 
 // 絵文字フォールバック
