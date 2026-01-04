@@ -38,6 +38,7 @@
         <option value="r">R</option>
         <option value="go">Go</option>
         <option value="csharp">C#</option>
+        <option value="cpp">C++</option>
       </select>
 
       <!-- Category Filter (List view) -->
@@ -75,7 +76,7 @@
         </select>
       </div>
       <div class="mt-3 text-sm text-gray-500">
-        {{ filteredItems.length }} 件
+        {{ filteredItems.length }} 件中 {{ paginationInfo.start }}-{{ paginationInfo.end }} 件を表示
       </div>
     </div>
 
@@ -84,7 +85,7 @@
       <!-- Programming Languages -->
       <template v-if="activeTab === 'languages'">
         <div
-          v-for="lang in filteredItems"
+          v-for="lang in paginatedItems"
           :key="lang.id"
           class="bg-white rounded-xl shadow-sm border p-5 hover:shadow-md hover:border-primary-200 transition-all"
         >
@@ -125,7 +126,7 @@
       <!-- Databases -->
       <template v-if="activeTab === 'databases'">
         <div
-          v-for="db in filteredItems"
+          v-for="db in paginatedItems"
           :key="db.id"
           class="bg-white rounded-xl shadow-sm border p-5 hover:shadow-md hover:border-primary-200 transition-all"
         >
@@ -166,7 +167,7 @@
       <!-- Frameworks -->
       <template v-if="activeTab === 'frameworks'">
         <div
-          v-for="fw in filteredItems"
+          v-for="fw in paginatedItems"
           :key="fw.id"
           class="bg-white rounded-xl shadow-sm border p-5 hover:shadow-md hover:border-primary-200 transition-all"
         >
@@ -202,7 +203,7 @@
       <!-- Dev Tools -->
       <template v-if="activeTab === 'devtools'">
         <div
-          v-for="tool in filteredItems"
+          v-for="tool in paginatedItems"
           :key="tool.id"
           class="bg-white rounded-xl shadow-sm border p-5 hover:shadow-md hover:border-primary-200 transition-all"
         >
@@ -238,7 +239,7 @@
       <!-- Libraries -->
       <template v-if="activeTab === 'libraries'">
         <div
-          v-for="lib in filteredItems"
+          v-for="lib in paginatedItems"
           :key="lib.id"
           @click="openLibraryDetail(lib)"
           class="bg-white rounded-xl shadow-sm border p-4 hover:shadow-md hover:border-primary-200 transition-all cursor-pointer"
@@ -272,6 +273,44 @@
     <div v-if="filteredItems.length === 0" class="text-center py-12">
       <div class="text-4xl mb-4">🔍</div>
       <p class="text-gray-500">該当する項目が見つかりません</p>
+    </div>
+
+    <!-- Pagination -->
+    <div v-if="totalPages > 1" class="mt-8 flex justify-center">
+      <nav class="flex items-center gap-1">
+        <!-- Previous -->
+        <button
+          @click="goToPage(currentPage - 1)"
+          :disabled="currentPage === 1"
+          class="px-3 py-2 rounded-lg border bg-white text-gray-600 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+        >
+          ←
+        </button>
+
+        <!-- Page Numbers -->
+        <template v-for="page in pageNumbers" :key="page">
+          <span v-if="page === '...'" class="px-3 py-2 text-gray-400">...</span>
+          <button
+            v-else
+            @click="goToPage(page as number)"
+            class="px-3 py-2 rounded-lg border transition-colors min-w-[40px]"
+            :class="currentPage === page
+              ? 'bg-primary-600 text-white border-primary-600'
+              : 'bg-white text-gray-600 hover:bg-gray-50'"
+          >
+            {{ page }}
+          </button>
+        </template>
+
+        <!-- Next -->
+        <button
+          @click="goToPage(currentPage + 1)"
+          :disabled="currentPage === totalPages"
+          class="px-3 py-2 rounded-lg border bg-white text-gray-600 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+        >
+          →
+        </button>
+      </nav>
     </div>
   </div>
 
@@ -391,6 +430,15 @@ const selectedLanguage = ref('')
 const selectedCategory = ref('')
 const selectedLibrary = ref<Library | null>(null)
 
+// ページネーション
+const currentPage = ref(1)
+const itemsPerPage = ref(24)
+
+// タブやフィルター変更時にページをリセット
+watch([activeTab, search, sortBy, selectedLanguage, selectedCategory, itemsPerPage], () => {
+  currentPage.value = 1
+})
+
 const tabs = computed(() => [
   { id: 'languages', name: 'プログラミング言語', icon: '💻', count: programmingLanguages.length },
   { id: 'databases', name: 'データベース', icon: '🗄️', count: databases.length },
@@ -417,6 +465,13 @@ const filteredItems = computed(() => {
       break
     case 'libraries':
       items = [...libraries]
+      // ライブラリ用フィルター
+      if (selectedLanguage.value) {
+        items = items.filter(lib => lib.language === selectedLanguage.value)
+      }
+      if (selectedCategory.value) {
+        items = items.filter(lib => lib.category === selectedCategory.value)
+      }
       break
   }
 
@@ -425,7 +480,8 @@ const filteredItems = computed(() => {
     const q = search.value.toLowerCase()
     items = items.filter(item =>
       item.name.toLowerCase().includes(q) ||
-      (item.notes && item.notes.toLowerCase().includes(q))
+      (item.notes && item.notes.toLowerCase().includes(q)) ||
+      (item.description && item.description.toLowerCase().includes(q))
     )
   }
 
@@ -440,6 +496,54 @@ const filteredItems = computed(() => {
 
   return items
 })
+
+// ページネーション計算
+const totalPages = computed(() => Math.ceil(filteredItems.value.length / itemsPerPage.value))
+
+const paginatedItems = computed(() => {
+  const start = (currentPage.value - 1) * itemsPerPage.value
+  const end = start + itemsPerPage.value
+  return filteredItems.value.slice(start, end)
+})
+
+// 表示情報
+const paginationInfo = computed(() => {
+  const total = filteredItems.value.length
+  const start = total === 0 ? 0 : (currentPage.value - 1) * itemsPerPage.value + 1
+  const end = Math.min(currentPage.value * itemsPerPage.value, total)
+  return { start, end, total }
+})
+
+// ページネーションのページ番号リスト
+const pageNumbers = computed(() => {
+  const pages: (number | string)[] = []
+  const total = totalPages.value
+  const current = currentPage.value
+
+  if (total <= 7) {
+    for (let i = 1; i <= total; i++) pages.push(i)
+  } else {
+    pages.push(1)
+    if (current > 3) pages.push('...')
+    
+    const start = Math.max(2, current - 1)
+    const end = Math.min(total - 1, current + 1)
+    
+    for (let i = start; i <= end; i++) pages.push(i)
+    
+    if (current < total - 2) pages.push('...')
+    pages.push(total)
+  }
+  
+  return pages
+})
+
+const goToPage = (page: number) => {
+  if (page >= 1 && page <= totalPages.value) {
+    currentPage.value = page
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+}
 
 const getDbBadgeClass = (type: string): string => {
   if (type.includes('RDBMS')) return 'bg-blue-100 text-blue-700'
@@ -484,19 +588,6 @@ const getToolBadgeClass = (category: string): string => {
   return classes[category] || 'bg-gray-100 text-gray-700'
 }
 
-const filteredLibraries = computed(() => {
-  let result = [...libraries]
-
-  if (selectedLanguage.value) {
-    result = result.filter(lib => lib.language === selectedLanguage.value)
-  }
-
-  if (selectedCategory.value) {
-    result = result.filter(lib => lib.category === selectedCategory.value)
-  }
-  return result.sort((a, b) => a.name.localeCompare(b.name))
-})
-
 const openLibraryDetail = (lib: Library) => {
   selectedLibrary.value = lib
 }
@@ -518,7 +609,7 @@ const getLanguageDisplayName = (language: string): string => {
   }
   return names[language] || language
 }
-// ラベルとバッジのクラス名を取得
+
 const getLanguageLabel = (language: string): string => {
   const labels: Record<string, string> = {
     javascript: 'JavaScript',
@@ -529,11 +620,13 @@ const getLanguageLabel = (language: string): string => {
     r: 'R',
     go: 'Go',
     csharp: 'C#',
+    cpp: 'C++',
     cobol: 'COBOL',
     multi: '複数言語'
   }
   return labels[language] || language
 }
+
 const getLanguageBadgeClass = (language: string): string => {
   const classes: Record<string, string> = {
     javascript: 'bg-yellow-100 text-yellow-800',
@@ -560,3 +653,12 @@ const getCategoryName = (category: LibraryCategory): string => {
   return cat?.nameJa || category
 }
 </script>
+
+<style scoped>
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+</style>
