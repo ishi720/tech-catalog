@@ -4,6 +4,7 @@
     :class="[iconClass, coloredClass]" 
     :style="{ fontSize: size }"
   ></i>
+  <span v-else :style="{ fontSize: size }">📄</span>
 </template>
 
 <script setup lang="ts">
@@ -54,6 +55,12 @@ const iconMap: Record<string, string> = {
   'CSS': 'devicon-css3-plain',
   'HTML': 'devicon-html5-plain',
   'Shell (Bash)': 'devicon-bash-plain',
+  'Zig': 'devicon-zig-plain',
+  'Nim': 'devicon-nim-plain',
+  'Markdown': 'devicon-markdown-plain',
+  'JSON': 'devicon-json-plain',
+  'Cairo': 'devicon-cairo-plain',
+  'Clojure': 'devicon-clojure-plain',
 
   // データベース
   'MySQL': 'devicon-mysql-original',
