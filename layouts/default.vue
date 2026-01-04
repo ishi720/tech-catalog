@@ -21,7 +21,7 @@
               class="text-gray-600 hover:text-primary-600 transition-colors"
               active-class="text-primary-600 font-medium"
             >
-              📚 ライブラリ
+              📚 マトリックス表
             </NuxtLink>
           </nav>
           <!-- Mobile menu button -->

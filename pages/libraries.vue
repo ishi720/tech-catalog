@@ -4,9 +4,8 @@
     <div class="mb-8">
       <h1 class="text-3xl font-bold text-gray-900 flex items-center gap-3">
         <span>📚</span>
-        ライブラリ一覧
+        マトリックス表
       </h1>
-      <p class="text-gray-500 mt-2">言語 × 用途でライブラリを比較</p>
     </div>
 
     <!-- View Toggle -->
