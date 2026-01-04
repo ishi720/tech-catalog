@@ -16,7 +16,7 @@ export interface ProgrammingLanguage {
 export interface Database {
   id: string
   name: string
-  queryLanguage: string
+  queryLanguage: string[]
   dependencyLanguages: string[]
   latestVersion: string
   type: string
