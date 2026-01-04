@@ -41,17 +41,17 @@
     </div>
 
     <!-- Matrix View -->
-    <div v-if="viewMode === 'matrix'" class="overflow-x-auto">
-      <table class="w-full border-collapse bg-white rounded-xl shadow-sm overflow-hidden">
-        <thead>
-          <tr class="bg-gray-50">
-            <th class="sticky left-0 bg-gray-50 px-4 py-3 text-left text-sm font-semibold text-gray-700 border-b border-r z-10 min-w-[120px]">
+    <div v-if="viewMode === 'matrix'" class="overflow-auto max-h-[calc(100vh-200px)] rounded-xl shadow-sm border bg-white">
+      <table class="w-full border-collapse">
+        <thead class="sticky top-0 z-20">
+          <tr>
+            <th class="sticky left-0 top-0 bg-gray-100 px-4 py-3 text-left text-sm font-semibold text-gray-700 border-b border-r z-30 min-w-[120px]">
               言語 / 用途
             </th>
             <th
               v-for="cat in libraryCategories"
               :key="cat.id"
-              class="px-3 py-3 text-center text-sm font-semibold text-gray-700 border-b min-w-[140px]"
+              class="px-3 py-3 text-center text-sm font-semibold text-gray-700 border-b min-w-[140px] bg-gray-100"
             >
               <div class="flex flex-col items-center gap-1">
                 <span class="text-lg">{{ cat.icon }}</span>
