@@ -21,64 +21,47 @@
       </button>
     </div>
 
-    <!-- View Toggle -->
-    <div class="flex items-center gap-4 mb-6">
-      <!-- Language Filter (List view) -->
-      <select
-        v-if="activeTab === 'libraries'"
-        v-model="selectedLanguage"
-        class="px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-500 outline-none bg-white"
-      >
-        <option value="">すべての言語</option>
-        <option value="javascript">JavaScript</option>
-        <option value="php">PHP</option>
-        <option value="python">Python</option>
-        <option value="java">Java</option>
-        <option value="ruby">Ruby</option>
-        <option value="r">R</option>
-        <option value="go">Go</option>
-        <option value="csharp">C#</option>
-        <option value="cpp">C++</option>
-      </select>
-
-      <!-- Category Filter (List view) -->
-      <select
-        v-if="activeTab === 'libraries'"
-        v-model="selectedCategory"
-        class="px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-500 outline-none bg-white"
-      >
-        <option value="">すべてのカテゴリ</option>
-        <option v-for="cat in libraryCategories" :key="cat.id" :value="cat.id">
-          {{ cat.icon }} {{ cat.nameJa }}
-        </option>
-      </select>
-    </div>
-
     <!-- Search & Filter -->
-    <div class="bg-white rounded-xl shadow-sm border p-4 mb-6">
-      <div class="flex flex-col md:flex-row gap-4">
-        <div class="flex-1 relative">
-          <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">🔍</span>
-          <input
-            v-model="search"
-            type="text"
-            placeholder="検索..."
-            class="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all"
-          />
-        </div>
+    <SearchBox
+      v-model="search"
+      v-model:sort-by="sortBy"
+      :total-count="filteredItems.length"
+      :start-index="paginationInfo.start"
+      :end-index="paginationInfo.end"
+      class="mb-6"
+    >
+      <template #filters>
+        <!-- Language Filter (Libraries) -->
         <select
-          v-model="sortBy"
-          class="px-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-500 outline-none bg-white min-w-[140px]"
+          v-if="activeTab === 'libraries'"
+          v-model="selectedLanguage"
+          class="px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-500 outline-none bg-white"
         >
-          <option value="name">名前順</option>
-          <option value="year-desc">新しい順</option>
-          <option value="year-asc">古い順</option>
+          <option value="">すべての言語</option>
+          <option value="javascript">JavaScript</option>
+          <option value="php">PHP</option>
+          <option value="python">Python</option>
+          <option value="java">Java</option>
+          <option value="ruby">Ruby</option>
+          <option value="r">R</option>
+          <option value="go">Go</option>
+          <option value="csharp">C#</option>
+          <option value="cpp">C++</option>
         </select>
-      </div>
-      <div class="mt-3 text-sm text-gray-500">
-        {{ filteredItems.length }} 件中 {{ paginationInfo.start }}-{{ paginationInfo.end }} 件を表示
-      </div>
-    </div>
+
+        <!-- Category Filter (Libraries) -->
+        <select
+          v-if="activeTab === 'libraries'"
+          v-model="selectedCategory"
+          class="px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-500 outline-none bg-white"
+        >
+          <option value="">すべてのカテゴリ</option>
+          <option v-for="cat in libraryCategories" :key="cat.id" :value="cat.id">
+            {{ cat.nameJa }}
+          </option>
+        </select>
+      </template>
+    </SearchBox>
 
     <!-- Grid -->
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -223,7 +206,7 @@
           </div>
           <p class="text-sm text-gray-600 mb-3 line-clamp-2">{{ lib.description }}</p>
           <div class="flex items-center gap-2">
-            <span class="text-lg">{{ getCategoryIcon(lib.category) }}</span>
+            <i :class="[getCategoryIcon(lib.category), 'text-gray-500']"></i>
             <span class="text-xs text-gray-500">{{ getCategoryName(lib.category) }}</span>
           </div>
           <div v-if="lib.features && lib.features.length > 0" class="mt-2 flex flex-wrap gap-1">
@@ -302,8 +285,9 @@
                   <TechIcon :name="getLanguageDisplayName(selectedLibrary.language)" size="0.875rem" />
                   <span>{{ getLanguageLabel(selectedLibrary.language) }}</span>
                 </div>
-                <span class="text-sm text-gray-500">
-                  {{ getCategoryIcon(selectedLibrary.category) }} {{ getCategoryName(selectedLibrary.category) }}
+                <span class="text-sm text-gray-500 flex items-center gap-1">
+                  <i :class="[getCategoryIcon(selectedLibrary.category), 'text-gray-500']"></i>
+                  {{ getCategoryName(selectedLibrary.category) }}
                 </span>
               </div>
             </div>
