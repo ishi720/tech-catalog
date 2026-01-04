@@ -272,7 +272,8 @@ const displayLanguages = [
   { id: 'ruby', name: 'Ruby' },
   { id: 'r', name: 'R' },
   { id: 'go', name: 'Go' },
-  { id: 'csharp', name: 'C#' }
+  { id: 'csharp', name: 'C#' },
+  { id: 'cpp', name: 'C++' }
 ]
 
 const getLibsForCell = (language: string, category: string): Library[] => {
@@ -308,6 +309,7 @@ const getLanguageDisplayName = (language: string): string => {
     r: 'R',
     go: 'Go',
     csharp: 'C#',
+    cpp: 'C++',
     cobol: 'COBOL',
     multi: 'JavaScript'
   }
@@ -340,6 +342,8 @@ const getLanguageBadgeClass = (language: string): string => {
     ruby: 'bg-red-100 text-red-800',
     r: 'bg-gray-100 text-gray-800',
     go: 'bg-cyan-100 text-cyan-800',
+    csharp: 'bg-purple-100 text-purple-800',
+    cpp: 'bg-green-100 text-green-800',
     cobol: 'bg-gray-100 text-gray-800'
   }
   return classes[language] || 'bg-gray-100 text-gray-800'

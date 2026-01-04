@@ -9,6 +9,7 @@ import { rubyLibraries } from './ruby'
 import { rLibraries } from './r'
 import { goLibraries } from './go'
 import { csharpLibraries } from './csharp'
+import { cppLibraries } from './cpp'
 
 // カテゴリ情報
 export const libraryCategories: LibraryCategoryInfo[] = [
@@ -48,7 +49,8 @@ export const libraries: Library[] = [
   ...rubyLibraries,
   ...rLibraries,
   ...goLibraries,
-  ...csharpLibraries
+  ...csharpLibraries,
+  ...cppLibraries
 ]
 
 // 言語でフィルターする関数
@@ -94,3 +96,4 @@ export { rubyLibraries }
 export { rLibraries }
 export { goLibraries }
 export { csharpLibraries }
+export { cppLibraries }
