@@ -3,7 +3,6 @@
     <!-- Header -->
     <div class="mb-8">
       <h1 class="text-3xl font-bold text-gray-900">技術一覧</h1>
-      <p class="text-gray-500 mt-2">プログラミング言語、データベース、フレームワーク、開発ツール</p>
     </div>
 
     <!-- Category Tabs -->
@@ -13,8 +12,8 @@
         :key="tab.id"
         @click="activeTab = tab.id"
         class="px-4 py-2 rounded-lg font-medium transition-all"
-        :class="activeTab === tab.id 
-          ? 'bg-primary-600 text-white shadow-md' 
+        :class="activeTab === tab.id
+          ? 'bg-primary-600 text-white shadow-md'
           : 'bg-white text-gray-600 hover:bg-gray-100 border'"
       >
         {{ tab.icon }} {{ tab.name }}
@@ -203,6 +202,57 @@
           </a>
         </div>
       </template>
+
+      <!-- Libraries -->
+      <template v-if="activeTab === 'libraries'">
+        <div
+          v-for="lib in filteredItems"
+          :key="lib.id"
+          class="bg-white rounded-lg shadow p-5 hover:shadow-md transition-shadow"
+        >
+            <div class="flex items-start justify-between mb-3">
+              <div>
+                <h3 class="font-semibold text-gray-900">{{ lib.name }}</h3>
+                <div class="flex items-center gap-2 mt-1">
+                  <span class="px-2 py-0.5 bg-pink-100 text-pink-700 text-xs rounded">
+                    {{ lib.language }}
+                  </span>
+                  <span class="px-2 py-0.5 bg-blue-100 text-blue-700 text-xs rounded">
+                    {{ lib.category }}
+                  </span>
+                </div>
+              </div>
+            </div>
+            <p class="text-sm text-gray-600 mb-3">{{ lib.description }}</p>
+            <div v-if="lib.features && lib.features.length > 0" class="flex flex-wrap gap-1 mb-3">
+              <span
+                v-for="feature in lib.features"
+                :key="feature"
+                class="px-2 py-0.5 bg-gray-100 text-gray-600 text-xs rounded"
+              >
+                {{ feature }}
+              </span>
+            </div>
+            <div class="flex gap-3">
+              <a
+                v-if="lib.officialUrl"
+                :href="lib.officialUrl"
+                target="_blank"
+                class="text-primary-600 text-sm hover:underline"
+              >
+                公式サイト →
+              </a>
+              <a
+                v-if="lib.github"
+                :href="lib.github"
+                target="_blank"
+                class="text-gray-600 text-sm hover:underline"
+              >
+                GitHub
+              </a>
+            </div>
+          </div>
+      </template>
     </div>
 
     <!-- Empty State -->
@@ -214,7 +264,7 @@
 </template>
 
 <script setup lang="ts">
-import { programmingLanguages, databases, frameworks, devTools } from '~/data'
+import { programmingLanguages, databases, frameworks, devTools, libraries } from '~/data'
 
 const activeTab = ref('languages')
 const search = ref('')
@@ -225,11 +275,12 @@ const tabs = computed(() => [
   { id: 'databases', name: 'データベース', icon: '🗄️', count: databases.length },
   { id: 'frameworks', name: 'フレームワーク', icon: '🏗️', count: frameworks.length },
   { id: 'devtools', name: '開発ツール', icon: '🛠️', count: devTools.length },
+  { id: 'libraries', name: 'ライブラリ', icon: '📚', count: libraries.length },
 ])
 
 const filteredItems = computed(() => {
   let items: any[] = []
-  
+
   switch (activeTab.value) {
     case 'languages':
       items = [...programmingLanguages]
@@ -243,17 +294,20 @@ const filteredItems = computed(() => {
     case 'devtools':
       items = [...devTools]
       break
+    case 'libraries':
+      items = [...libraries]
+      break
   }
-  
+
   // Search
   if (search.value) {
     const q = search.value.toLowerCase()
-    items = items.filter(item => 
+    items = items.filter(item =>
       item.name.toLowerCase().includes(q) ||
       (item.notes && item.notes.toLowerCase().includes(q))
     )
   }
-  
+
   // Sort
   if (sortBy.value === 'name') {
     items.sort((a, b) => a.name.localeCompare(b.name))
@@ -262,7 +316,7 @@ const filteredItems = computed(() => {
   } else if (sortBy.value === 'year-asc') {
     items.sort((a, b) => (a.birthYear || 0) - (b.birthYear || 0))
   }
-  
+
   return items
 })
 
