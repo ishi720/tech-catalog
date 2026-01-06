@@ -47,10 +47,181 @@ export const devTools: DevTool[] = [
     name: 'Neovim',
     category: 'editor',
     platform: ['Windows', 'macOS', 'Linux'],
-    latestVersion: '0.10',
+    latestVersion: '0.11',
     license: 'Apache 2.0',
     officialUrl: 'https://neovim.io/',
-    notes: 'Vimの進化版'
+    notes: 'Vimの進化版、Lua拡張'
+  },
+  // ↓↓↓ 新規追加エディター ↓↓↓
+  {
+    id: 'sublime-text',
+    name: 'Sublime Text',
+    category: 'editor',
+    platform: ['Windows', 'macOS', 'Linux'],
+    latestVersion: '4 (Build 4200)',
+    license: 'Commercial',
+    officialUrl: 'https://www.sublimetext.com/',
+    notes: '高速・軽量エディタ'
+  },
+  {
+    id: 'vim',
+    name: 'Vim',
+    category: 'editor',
+    platform: ['Windows', 'macOS', 'Linux'],
+    latestVersion: '9.1',
+    license: 'Vim License',
+    officialUrl: 'https://www.vim.org/',
+    notes: 'ターミナルエディタの王様'
+  },
+  {
+    id: 'emacs',
+    name: 'GNU Emacs',
+    category: 'editor',
+    platform: ['Windows', 'macOS', 'Linux'],
+    latestVersion: '30.1',
+    license: 'GPL-3.0',
+    officialUrl: 'https://www.gnu.org/software/emacs/',
+    notes: '拡張性の高いエディタ'
+  },
+  {
+    id: 'notepadpp',
+    name: 'Notepad++',
+    category: 'editor',
+    platform: ['Windows'],
+    latestVersion: '8.7',
+    license: 'GPL-3.0',
+    officialUrl: 'https://notepad-plus-plus.org/',
+    notes: 'Windows用軽量エディタ'
+  },
+  {
+    id: 'zed',
+    name: 'Zed',
+    category: 'editor',
+    platform: ['Windows', 'macOS', 'Linux'],
+    latestVersion: '0.217',
+    license: 'GPL-3.0 / AGPL-3.0',
+    officialUrl: 'https://zed.dev/',
+    notes: 'Rust製高速エディタ、AI対応'
+  },
+  {
+    id: 'helix',
+    name: 'Helix',
+    category: 'editor',
+    platform: ['Windows', 'macOS', 'Linux'],
+    latestVersion: '25.01',
+    license: 'MPL-2.0',
+    officialUrl: 'https://helix-editor.com/',
+    notes: 'Rust製ターミナルエディタ'
+  },
+  {
+    id: 'eclipse',
+    name: 'Eclipse IDE',
+    category: 'ide',
+    platform: ['Windows', 'macOS', 'Linux'],
+    latestVersion: '2025-12',
+    license: 'EPL-2.0',
+    officialUrl: 'https://www.eclipse.org/',
+    notes: 'Java開発定番IDE'
+  },
+  {
+    id: 'pycharm',
+    name: 'PyCharm',
+    category: 'ide',
+    platform: ['Windows', 'macOS', 'Linux'],
+    latestVersion: '2024.3',
+    license: 'Community / Professional',
+    officialUrl: 'https://www.jetbrains.com/pycharm/',
+    notes: 'Python専用IDE'
+  },
+  {
+    id: 'android-studio',
+    name: 'Android Studio',
+    category: 'ide',
+    platform: ['Windows', 'macOS', 'Linux'],
+    latestVersion: '2024.2 (Ladybug)',
+    license: 'Apache 2.0',
+    officialUrl: 'https://developer.android.com/studio',
+    notes: 'Android公式IDE'
+  },
+  {
+    id: 'xcode',
+    name: 'Xcode',
+    category: 'ide',
+    platform: ['macOS'],
+    latestVersion: '16.2',
+    license: 'Proprietary',
+    officialUrl: 'https://developer.apple.com/xcode/',
+    notes: 'Apple公式IDE'
+  },
+  {
+    id: 'visual-studio',
+    name: 'Visual Studio',
+    category: 'ide',
+    platform: ['Windows', 'macOS'],
+    latestVersion: '2022 (17.12)',
+    license: 'Community / Professional / Enterprise',
+    officialUrl: 'https://visualstudio.microsoft.com/',
+    notes: 'Microsoft製フルスタックIDE'
+  },
+  {
+    id: 'rider',
+    name: 'Rider',
+    category: 'ide',
+    platform: ['Windows', 'macOS', 'Linux'],
+    latestVersion: '2024.3',
+    license: 'Commercial',
+    officialUrl: 'https://www.jetbrains.com/rider/',
+    notes: '.NET/Unity開発IDE'
+  },
+  {
+    id: 'goland',
+    name: 'GoLand',
+    category: 'ide',
+    platform: ['Windows', 'macOS', 'Linux'],
+    latestVersion: '2024.3',
+    license: 'Commercial',
+    officialUrl: 'https://www.jetbrains.com/go/',
+    notes: 'Go専用IDE'
+  },
+  {
+    id: 'rustrover',
+    name: 'RustRover',
+    category: 'ide',
+    platform: ['Windows', 'macOS', 'Linux'],
+    latestVersion: '2024.3',
+    license: 'Non-commercial free / Commercial',
+    officialUrl: 'https://www.jetbrains.com/rust/',
+    notes: 'Rust専用IDE'
+  },
+  {
+    id: 'fleet',
+    name: 'Fleet',
+    category: 'editor',
+    platform: ['Windows', 'macOS', 'Linux'],
+    latestVersion: 'Public Preview',
+    license: 'Freemium',
+    officialUrl: 'https://www.jetbrains.com/fleet/',
+    notes: 'JetBrains製軽量エディタ'
+  },
+  {
+    id: 'windsurf',
+    name: 'Windsurf',
+    category: 'editor',
+    platform: ['Windows', 'macOS', 'Linux'],
+    latestVersion: '1.x',
+    license: 'Freemium',
+    officialUrl: 'https://codeium.com/windsurf',
+    notes: 'Codeium製AI搭載IDE'
+  },
+  {
+    id: 'lapce',
+    name: 'Lapce',
+    category: 'editor',
+    platform: ['Windows', 'macOS', 'Linux'],
+    latestVersion: '0.4',
+    license: 'Apache 2.0',
+    officialUrl: 'https://lapce.dev/',
+    notes: 'Rust製高速エディタ'
   },
   // Version Control
   {

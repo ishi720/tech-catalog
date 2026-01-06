@@ -102,12 +102,31 @@ const iconMap: Record<string, string> = {
   'Vitest': 'devicon-vitest-original',
   'pytest': 'devicon-pytest-original',
   
-  // 開発ツール
+  // 開発ツール - エディタ / IDE
   'Visual Studio Code': 'devicon-vscode-original',
   'IntelliJ IDEA': 'devicon-intellij-original',
   'WebStorm': 'devicon-webstorm-original',
   'Cursor': 'devicon-vscode-original',
   'Neovim': 'devicon-neovim-original',
+  'Sublime Text': 'devicon-sublime-plain',
+  'Vim': 'devicon-vim-plain',
+  'GNU Emacs': 'devicon-emacs-original',
+  'Notepad++': 'devicon-notepadplusplus-original',
+  'Zed': 'devicon-zed-plain',
+  'Helix': 'devicon-helix-original',
+  'Eclipse IDE': 'devicon-eclipse-original',
+  'PyCharm': 'devicon-pycharm-original',
+  'Android Studio': 'devicon-androidstudio-original',
+  'Xcode': 'devicon-xcode-original',
+  'Visual Studio': 'devicon-visualstudio-plain',
+  'Rider': 'devicon-rider-original',
+  'GoLand': 'devicon-goland-original',
+  'RustRover': 'devicon-rust-plain',
+  'Fleet': 'devicon-jetbrains-original',
+  'Windsurf': 'devicon-vscode-original',
+  'Lapce': 'devicon-rust-plain',
+  
+  // 開発ツール - その他
   'Git': 'devicon-git-original',
   'GitHub': 'devicon-github-original',
   'GitLab': 'devicon-gitlab-original',
