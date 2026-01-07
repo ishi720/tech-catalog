@@ -32,22 +32,20 @@ tech-catalog/
 ├── app.vue                 # アプリケーションエントリー
 ├── nuxt.config.ts          # Nuxt設定
 ├── components/             # 再利用可能コンポーネント
-│   ├── TechCard.vue        # カード表示
-│   └── SearchFilter.vue    # 検索・フィルター
+│   ├── TechIcon.vue        # アイコン表示
+│   └── SearchBox.vue       # 検索ボックス
 ├── data/                   # データファイル
+│   ├── Libraries/          # 言語ごとのライブラリ
 │   ├── index.ts            # データエクスポート
 │   ├── languages.ts        # プログラミング言語
 │   ├── databases.ts        # データベース
-│   ├── frameworks.ts       # フレームワーク
 │   └── devtools.ts         # 開発ツール
 ├── layouts/
 │   └── default.vue         # デフォルトレイアウト
 ├── pages/                  # ページコンポーネント
 │   ├── index.vue           # ホーム
-│   ├── languages.vue       # 言語一覧
-│   ├── databases.vue       # DB一覧
-│   ├── frameworks.vue      # FW一覧
-│   └── devtools.vue        # ツール一覧
+│   ├── tech.vue            # 技術一覧
+│   └── libraries.vue        # マトリックス表
 └── types/
     └── index.ts            # TypeScript型定義
 ```
@@ -82,7 +80,6 @@ tech-catalog/
 
 - `ProgrammingLanguage` - プログラミング言語
 - `Database` - データベース
-- `Framework` - フレームワーク
 - `DevTool` - 開発ツール
 
 ## カスタマイズ
