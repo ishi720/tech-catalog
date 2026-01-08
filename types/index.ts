@@ -56,6 +56,7 @@ export interface Library {
 
 // ライブラリカテゴリ
 export type LibraryCategory =
+  | 'cms'
   | 'framework'
   | 'testing'
   | 'image'
@@ -81,6 +82,7 @@ export type LibraryCategory =
   | 'utility'
   | 'cli'
   | 'chart'
+
 
 // ライブラリカテゴリ情報
 export interface LibraryCategoryInfo {

@@ -13,6 +13,7 @@ import { cppLibraries } from './cpp'
 
 // カテゴリ情報
 export const libraryCategories: LibraryCategoryInfo[] = [
+  { id: 'cms', name: 'CMS', nameJa: 'CMS', icon: '📰', description: 'コンテンツ管理システム、ヘッドレスCMS' },
   { id: 'framework', name: 'Framework', nameJa: 'フレームワーク', icon: '🏗️', description: 'Webフレームワーク、アプリケーションフレームワーク' },
   { id: 'testing', name: 'Testing', nameJa: 'テスト', icon: '🧪', description: 'ユニットテスト、E2Eテスト、モック' },
   { id: 'image', name: 'Image', nameJa: '画像処理', icon: '🖼️', description: '画像変換、リサイズ、最適化' },
