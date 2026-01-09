@@ -150,4 +150,13 @@ export const csharpLibraries: Library[] = [
   { id: 'cs-livecharts', name: 'LiveCharts2', category: 'chart', language: 'csharp', description: 'クロスプラットフォームチャート', packageName: 'LiveChartsCore.SkiaSharpView', officialUrl: 'https://lvcharts.com/', features: ['アニメーション', 'リアルタイム', 'MAUI対応'] },
   { id: 'cs-scottplot', name: 'ScottPlot', category: 'chart', language: 'csharp', description: '科学用プロットライブラリ', packageName: 'ScottPlot', officialUrl: 'https://scottplot.net/', features: ['科学', '高速', 'インタラクティブ'] },
   { id: 'cs-oxyplot', name: 'OxyPlot', category: 'chart', language: 'csharp', description: 'クロスプラットフォームプロット', packageName: 'OxyPlot.Core', officialUrl: 'https://oxyplot.github.io/', features: ['2D', 'エクスポート', '多プラットフォーム'] },
+
+  // ==================== CMS ====================
+  { id: 'cs-umbraco', name: 'Umbraco', category: 'cms', language: 'csharp', description: '.NET製オープンソースCMS', packageName: 'Umbraco.Cms', officialUrl: 'https://umbraco.com/', features: ['柔軟', 'マルチサイト', 'ヘッドレス対応', 'エディタフレンドリー'] },
+  { id: 'cs-orchard', name: 'Orchard Core', category: 'cms', language: 'csharp', description: 'ASP.NET Core製モジュラーCMS', packageName: 'OrchardCore', officialUrl: 'https://orchardcore.net/', features: ['モジュラー', 'マルチテナント', 'ヘッドレス', 'Liquid'] },
+  { id: 'cs-piranha', name: 'Piranha CMS', category: 'cms', language: 'csharp', description: '軽量.NET CMS', packageName: 'Piranha', officialUrl: 'https://piranhacms.org/', features: ['軽量', 'ヘッドレス', 'Blazor管理画面', 'クロスプラットフォーム'] },
+  { id: 'cs-squidex', name: 'Squidex', category: 'cms', language: 'csharp', description: '.NET製ヘッドレスCMS', packageName: 'Squidex', officialUrl: 'https://squidex.io/', features: ['ヘッドレス', 'GraphQL', 'イベントソーシング', 'マルチ言語'] },
+  { id: 'cs-nopcommerce', name: 'nopCommerce', category: 'cms', language: 'csharp', description: 'ASP.NET Core製EコマースCMS', officialUrl: 'https://www.nopcommerce.com/', features: ['Eコマース', 'プラグイン', 'マルチストア', 'B2B/B2C'] },
+  { id: 'cs-composite', name: 'Composite C1', category: 'cms', language: 'csharp', description: '.NET製Webコンテンツ管理', officialUrl: 'https://c1.orckestra.com/', features: ['XSLT/Razor', 'パッケージ', 'マルチサイト'] },
+  { id: 'cs-cofoundry', name: 'Cofoundry', category: 'cms', language: 'csharp', description: 'ASP.NET Core CMSフレームワーク', packageName: 'Cofoundry', officialUrl: 'https://www.cofoundry.org/', features: ['フレームワーク', 'API優先', 'モジュラー', '拡張可能'] },
 ]

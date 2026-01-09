@@ -102,4 +102,12 @@ export const pythonLibraries: Library[] = [
   { id: 'py-matplotlib', name: 'Matplotlib', category: 'chart', language: 'python', description: 'グラフ描画定番', packageName: 'matplotlib', officialUrl: 'https://matplotlib.org/', features: ['静的グラフ', '多種類'] },
   { id: 'py-seaborn', name: 'Seaborn', category: 'chart', language: 'python', description: '統計可視化', packageName: 'seaborn', officialUrl: 'https://seaborn.pydata.org/', features: ['統計', 'テーマ'] },
   { id: 'py-plotly', name: 'Plotly', category: 'chart', language: 'python', description: 'インタラクティブグラフ', packageName: 'plotly', officialUrl: 'https://plotly.com/python/', features: ['インタラクティブ', '3D'] },
+
+  // CMS
+  { id: 'py-wagtail', name: 'Wagtail', category: 'cms', language: 'python', description: 'Django製モダンCMS。編集者フレンドリー', packageName: 'wagtail', officialUrl: 'https://wagtail.org/', features: ['Djangoベース', 'StreamField', 'ページツリー', 'REST API'] },
+  { id: 'py-django-cms', name: 'django CMS', category: 'cms', language: 'python', description: 'Django製エンタープライズCMS', packageName: 'django-cms', officialUrl: 'https://www.django-cms.org/', features: ['Djangoベース', 'プラグイン', 'フロントエンド編集', '多言語'] },
+  { id: 'py-mezzanine', name: 'Mezzanine', category: 'cms', language: 'python', description: 'Django製ブログ/CMSプラットフォーム', packageName: 'mezzanine', officialUrl: 'http://mezzanine.jupo.org/', features: ['Djangoベース', 'ブログ', 'Eコマース', 'Bootstrap'] },
+  { id: 'py-lektor', name: 'Lektor', category: 'cms', language: 'python', description: '静的サイト生成CMS。管理画面付き', packageName: 'lektor', officialUrl: 'https://www.getlektor.com/', features: ['静的サイト', '管理画面', 'プラグイン', 'デプロイ'] },
+  { id: 'py-pelican', name: 'Pelican', category: 'cms', language: 'python', description: 'Python製静的サイトジェネレータ', packageName: 'pelican', officialUrl: 'https://getpelican.com/', features: ['静的サイト', 'Markdown/RST', 'テーマ', 'プラグイン'] },
+  { id: 'py-plone', name: 'Plone', category: 'cms', language: 'python', description: 'エンタープライズCMS。Zopeベース', packageName: 'plone', officialUrl: 'https://plone.org/', features: ['エンタープライズ', 'ワークフロー', 'セキュリティ', '多言語'] },
 ]

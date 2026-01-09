@@ -152,4 +152,15 @@ export const jsLibraries: Library[] = [
   { id: 'js-recharts', name: 'Recharts', category: 'chart', language: 'javascript', description: 'React用チャート（D3ベース）', packageName: 'recharts', officialUrl: 'https://recharts.org/', features: ['React', 'D3ベース', '宣言的'] },
   { id: 'js-apexcharts', name: 'ApexCharts', category: 'chart', language: 'javascript', description: 'モダンチャートライブラリ', packageName: 'apexcharts', officialUrl: 'https://apexcharts.com/', features: ['インタラクティブ', 'アニメーション', '多種類'] },
   { id: 'js-echarts', name: 'ECharts', category: 'chart', language: 'javascript', description: 'Apache製可視化ライブラリ', packageName: 'echarts', officialUrl: 'https://echarts.apache.org/', features: ['高機能', '大規模データ', '3D対応'] },
+
+    // CMS
+  { id: 'js-strapi', name: 'Strapi', category: 'cms', language: 'javascript', description: 'Node.js製ヘッドレスCMS。カスタマイズ性高', packageName: '@strapi/strapi', officialUrl: 'https://strapi.io/', features: ['ヘッドレス', 'REST/GraphQL', 'プラグイン'] },
+  { id: 'js-ghost', name: 'Ghost', category: 'cms', language: 'javascript', description: 'モダンなパブリッシングプラットフォーム', packageName: 'ghost', officialUrl: 'https://ghost.org/', features: ['ブログ特化', 'メンバーシップ', 'SEO対応'] },
+  { id: 'js-keystone', name: 'KeystoneJS', category: 'cms', language: 'javascript', description: 'GraphQL APIファーストCMS', packageName: '@keystone-6/core', officialUrl: 'https://keystonejs.com/', features: ['GraphQL', 'Prisma連携', '管理画面自動生成'] },
+  { id: 'js-payload', name: 'Payload CMS', category: 'cms', language: 'javascript', description: 'TypeScript製モダンヘッドレスCMS', packageName: 'payload', officialUrl: 'https://payloadcms.com/', features: ['TypeScript', 'セルフホスト', 'カスタムフィールド'] },
+  { id: 'js-directus', name: 'Directus', category: 'cms', language: 'javascript', description: 'データベースラッパー型ヘッドレスCMS', packageName: 'directus', officialUrl: 'https://directus.io/', features: ['既存DB対応', 'REST/GraphQL', 'ノーコード'] },
+  { id: 'js-sanity', name: 'Sanity', category: 'cms', language: 'javascript', description: 'リアルタイム構造化コンテンツ管理', packageName: '@sanity/client', officialUrl: 'https://www.sanity.io/', features: ['リアルタイム', 'カスタムスキーマ', 'GROQ'] },
+  { id: 'js-contentful', name: 'Contentful SDK', category: 'cms', language: 'javascript', description: 'Contentful公式SDK', packageName: 'contentful', officialUrl: 'https://www.contentful.com/', features: ['マネージド', 'CDN', '多言語対応'] },
+  { id: 'js-decap', name: 'Decap CMS', category: 'cms', language: 'javascript', description: 'Git-based CMS（旧Netlify CMS）', packageName: 'decap-cms-app', officialUrl: 'https://decapcms.org/', features: ['Gitベース', '静的サイト向け', 'エディタUI'] },
+  { id: 'js-tinacms', name: 'TinaCMS', category: 'cms', language: 'javascript', description: 'Gitバックエンドのビジュアル編集CMS', packageName: 'tinacms', officialUrl: 'https://tina.io/', features: ['ビジュアル編集', 'Gitベース', 'React対応'] },
 ]

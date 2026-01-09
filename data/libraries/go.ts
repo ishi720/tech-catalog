@@ -188,4 +188,12 @@ export const goLibraries: Library[] = [
   { id: 'go-plot', name: 'gonum/plot', category: 'chart', language: 'go', description: 'プロットライブラリ', packageName: 'gonum.org/v1/plot', officialUrl: 'https://github.com/gonum/plot', features: ['科学', 'グラフ', '画像出力'] },
   { id: 'go-termui', name: 'termui', category: 'chart', language: 'go', description: 'ターミナルダッシュボード', packageName: 'github.com/gizak/termui', github: 'https://github.com/gizak/termui', features: ['TUI', 'ダッシュボード', 'ウィジェット'] },
   { id: 'go-asciigraph', name: 'asciigraph', category: 'chart', language: 'go', description: 'ASCIIグラフ', packageName: 'github.com/guptarohit/asciigraph', github: 'https://github.com/guptarohit/asciigraph', features: ['ASCII', 'ターミナル', 'シンプル'] },
+
+  // ==================== CMS ====================
+  { id: 'go-hugo', name: 'Hugo', category: 'cms', language: 'go', description: '世界最速の静的サイトジェネレータ', officialUrl: 'https://gohugo.io/', features: ['超高速', 'Markdown', 'テーマ', '多言語'] },
+  { id: 'go-ponzu', name: 'Ponzu', category: 'cms', language: 'go', description: 'Go製ヘッドレスCMS・API', packageName: 'github.com/ponzu-cms/ponzu', github: 'https://github.com/ponzu-cms/ponzu', features: ['ヘッドレス', 'API自動生成', 'HTTPS対応', 'CLI'] },
+  { id: 'go-grav', name: 'Decap (Go)', category: 'cms', language: 'go', description: 'Gitベース静的CMS（Goバックエンド）', github: 'https://github.com/decaporg/decap-cms', officialUrl: 'https://decapcms.org/', features: ['静的サイト', 'Gitベース', 'React管理画面'] },
+  { id: 'go-writefreely', name: 'WriteFreely', category: 'cms', language: 'go', description: 'ミニマリストブログプラットフォーム', packageName: 'github.com/writefreely/writefreely', officialUrl: 'https://writefreely.org/', features: ['ブログ', 'フェデレーション', 'ミニマル', 'ActivityPub'] },
+  { id: 'go-lorca', name: 'Lorca CMS', category: 'cms', language: 'go', description: 'シンプルなGo製CMS', github: 'https://github.com/zserge/lorca', features: ['軽量', 'シンプル', 'ローカル'] },
+
 ]

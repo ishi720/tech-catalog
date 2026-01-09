@@ -89,4 +89,13 @@ export const javaLibraries: Library[] = [
 
   // グラフ・可視化
   { id: 'java-jfreechart', name: 'JFreeChart', category: 'chart', language: 'java', description: 'チャートライブラリ', packageName: 'org.jfree.jfreechart', officialUrl: 'https://www.jfree.org/jfreechart/', features: ['チャート', '多種類'] },
+
+  // CMS
+  { id: 'java-magnolia', name: 'Magnolia', category: 'cms', language: 'java', description: 'エンタープライズ向けヘッドレスCMS', officialUrl: 'https://www.magnolia-cms.com/', features: ['ヘッドレス', 'Visual SPA Editor', 'DAM', 'パーソナライゼーション'] },
+  { id: 'java-bloomreach', name: 'Bloomreach (Hippo)', category: 'cms', language: 'java', description: 'エンタープライズCMS・DXP', officialUrl: 'https://www.bloomreach.com/', features: ['DXP', 'Eコマース', 'パーソナライゼーション', 'ヘッドレス'] },
+  { id: 'java-dotcms', name: 'dotCMS', category: 'cms', language: 'java', description: 'ハイブリッドヘッドレスCMS', officialUrl: 'https://www.dotcms.com/', features: ['ハイブリッド', 'GraphQL', 'ワークフロー', 'マルチテナント'] },
+  { id: 'java-jahia', name: 'Jahia', category: 'cms', language: 'java', description: 'エンタープライズDXP', officialUrl: 'https://www.jahia.com/', features: ['DXP', 'GraphQL', 'パーソナライゼーション', 'マーケティング'] },
+  { id: 'java-liferay', name: 'Liferay', category: 'cms', language: 'java', description: 'エンタープライズポータル・DXP', officialUrl: 'https://www.liferay.com/', features: ['ポータル', 'DXP', 'ワークフロー', 'Eコマース'] },
+  { id: 'java-openCms', name: 'OpenCms', category: 'cms', language: 'java', description: 'オープンソースエンタープライズCMS', officialUrl: 'http://www.opencms.org/', features: ['インプレース編集', 'マルチサイト', 'テンプレート', 'ワークフロー'] },
+  { id: 'java-enonic', name: 'Enonic XP', category: 'cms', language: 'java', description: 'ヘッドレスCMS・プラットフォーム', officialUrl: 'https://enonic.com/', features: ['ヘッドレス', 'GraphQL', 'ビジュアル編集', 'Kubernetes'] },
 ]

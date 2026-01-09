@@ -153,4 +153,13 @@ export const rubyLibraries: Library[] = [
   // グラフ・可視化
   { id: 'ruby-chartkick', name: 'Chartkick', category: 'chart', language: 'ruby', description: 'Rails用チャート', packageName: 'chartkick', officialUrl: 'https://chartkick.com/', features: ['Chart.js', 'Highcharts', 'Rails'] },
   { id: 'ruby-gruff', name: 'Gruff', category: 'chart', language: 'ruby', description: 'グラフ生成', packageName: 'gruff', github: 'https://github.com/topfunky/gruff', features: ['画像', 'グラフ', 'サーバーサイド'] },
+
+  // CMS
+  { id: 'rb-refinery', name: 'Refinery CMS', category: 'cms', language: 'ruby', description: 'Rails製拡張可能CMS', packageName: 'refinerycms', officialUrl: 'https://www.refinerycms.com/', features: ['Railsベース', 'エンジン', 'カスタマイズ', '多言語'] },
+  { id: 'rb-alchemy', name: 'Alchemy CMS', category: 'cms', language: 'ruby', description: 'Rails製ヘッドレスCMS', packageName: 'alchemy_cms', officialUrl: 'https://alchemy-cms.com/', features: ['Railsベース', 'ヘッドレス', 'ページ編集', '多言語'] },
+  { id: 'rb-camaleon', name: 'Camaleon CMS', category: 'cms', language: 'ruby', description: 'Rails製WordPress風CMS', packageName: 'camaleon_cms', officialUrl: 'http://camaleon.tuzitio.com/', features: ['Railsベース', 'プラグイン', 'テーマ', 'マルチサイト'] },
+  { id: 'rb-spina', name: 'Spina CMS', category: 'cms', language: 'ruby', description: '軽量Rails CMS', packageName: 'spina', officialUrl: 'https://spinacms.com/', features: ['Railsベース', '軽量', 'カスタムページ', 'Stimulus'] },
+  { id: 'rb-locomotive', name: 'LocomotiveCMS', category: 'cms', language: 'ruby', description: 'Railsエンジン型CMS', packageName: 'locomotive_cms', officialUrl: 'https://www.locomotivecms.com/', features: ['Railsエンジン', 'Liquid', 'API', 'マルチサイト'] },
+  { id: 'rb-jekyll', name: 'Jekyll', category: 'cms', language: 'ruby', description: '静的サイトジェネレータ（GitHub Pages）', packageName: 'jekyll', officialUrl: 'https://jekyllrb.com/', features: ['静的サイト', 'Markdown', 'Liquid', 'GitHub Pages'] },
+  { id: 'rb-middleman', name: 'Middleman', category: 'cms', language: 'ruby', description: '静的サイトジェネレータ', packageName: 'middleman', officialUrl: 'https://middlemanapp.com/', features: ['静的サイト', 'アセットパイプライン', 'テンプレート', 'i18n'] },
 ]

@@ -174,4 +174,9 @@ export const rLibraries: Library[] = [
   { id: 'r-cowplot', name: 'cowplot', category: 'chart', language: 'r', description: 'ggplot2アドオン', packageName: 'cowplot', officialUrl: 'https://wilkelab.org/cowplot/', features: ['テーマ', 'グリッド', '出版品質'] },
   { id: 'r-scales', name: 'scales', category: 'chart', language: 'r', description: 'スケール・フォーマット', packageName: 'scales', officialUrl: 'https://scales.r-lib.org/', features: ['スケール', 'フォーマット', 'カラー'] },
   { id: 'r-viridis', name: 'viridis', category: 'chart', language: 'r', description: 'カラーパレット', packageName: 'viridis', officialUrl: 'https://sjmgarnier.github.io/viridis/', features: ['カラー', 'アクセシブル', 'ggplot2'] },
+
+  // CMS
+  { id: 'r-blogdown', name: 'blogdown', category: 'cms', language: 'r', description: 'R Markdown + Hugoでブログ構築', packageName: 'blogdown', officialUrl: 'https://bookdown.org/yihui/blogdown/', features: ['R Markdown', 'Hugo', 'ブログ', '静的サイト'] },
+  { id: 'r-distill', name: 'distill', category: 'cms', language: 'r', description: '科学・技術ブログ向け', packageName: 'distill', officialUrl: 'https://rstudio.github.io/distill/', features: ['R Markdown', '科学論文風', '引用', 'アクセシビリティ'] },
+  { id: 'r-quarto', name: 'Quarto', category: 'cms', language: 'r', description: '次世代科学出版システム', officialUrl: 'https://quarto.org/', features: ['多言語', 'ドキュメント', 'ブログ', 'スライド'] },
 ]
