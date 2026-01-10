@@ -57,6 +57,7 @@ export interface Library {
     | 'cpp'
     | 'haskell'
     | 'kotlin'
+    | 'swift'
     | 'multi'
   description: string
   latestVersion?: string

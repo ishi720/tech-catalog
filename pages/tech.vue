@@ -49,6 +49,7 @@
           <option value="cpp">C++</option>
           <option value="haskell">Haskell</option>
           <option value="kotlin">Kotlin</option>
+          <option value="swift">Swift</option>
         </select>
 
         <!-- Category Filter (Libraries) -->
@@ -557,6 +558,8 @@ const getLanguageDisplayName = (language: string): string => {
     csharp: 'C#',
     cpp: 'C++',
     cobol: 'COBOL',
+    kotlin: 'Kotlin',
+    swift: 'Swift',
     multi: 'JavaScript'
   }
   return names[language] || language
@@ -574,6 +577,8 @@ const getLanguageLabel = (language: string): string => {
     csharp: 'C#',
     cpp: 'C++',
     cobol: 'COBOL',
+    kotlin: 'Kotlin',
+    swift: 'Swift',
     multi: '複数言語'
   }
   return labels[language] || language
@@ -590,6 +595,8 @@ const getLanguageBadgeClass = (language: string): string => {
     go: 'bg-cyan-100 text-cyan-800',
     csharp: 'bg-purple-100 text-purple-800',
     cpp: 'bg-green-100 text-green-800',
+    kotlin: 'bg-orange-100 text-orange-800',
+    swift: 'bg-orange-100 text-orange-800',
     cobol: 'bg-gray-100 text-gray-800'
   }
   return classes[language] || 'bg-gray-100 text-gray-800'

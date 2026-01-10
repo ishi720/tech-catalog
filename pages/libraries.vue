@@ -225,7 +225,8 @@ const displayLanguages = [
   { id: 'csharp', name: 'C#' },
   { id: 'cpp', name: 'C++' },
   { id: 'haskell', name: 'Haskell' },
-  { id: 'kotlin', name: 'Kotlin' }
+  { id: 'kotlin', name: 'Kotlin' },
+  { id: 'swift', name: 'Swift' }
 ]
 
 const getLibsForCell = (language: string, category: string): Library[] => {
@@ -264,6 +265,8 @@ const getLanguageDisplayName = (language: string): string => {
     cpp: 'C++',
     cobol: 'COBOL',
     haskell: 'Haskell',
+    kotlin: 'Kotlin',
+    swift: 'Swift',
     multi: 'JavaScript'
   }
   return names[language] || language
@@ -284,6 +287,7 @@ const getLanguageLabel = (language: string): string => {
     haskell: 'Haskell',
     cpp: 'C++',
     kotlin: 'Kotlin',
+    swift: 'Swift',
     multi: '複数言語'
   }
   return labels[language] || language
@@ -302,6 +306,7 @@ const getLanguageBadgeClass = (language: string): string => {
     cpp: 'bg-green-100 text-green-800',
     cobol: 'bg-gray-100 text-gray-800',
     haskell: 'bg-purple-100 text-purple-800',
+    swift: 'bg-orange-100 text-orange-800',
     kotlin: 'bg-orange-100 text-orange-800',
   }
   return classes[language] || 'bg-gray-100 text-gray-800'
