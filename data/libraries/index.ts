@@ -10,6 +10,7 @@ import { rLibraries } from './r'
 import { goLibraries } from './go'
 import { csharpLibraries } from './csharp'
 import { cppLibraries } from './cpp'
+import { haskellLibraries } from './haskell'
 
 // カテゴリ情報
 export const libraryCategories: LibraryCategoryInfo[] = [
@@ -51,7 +52,8 @@ export const libraries: Library[] = [
   ...rLibraries,
   ...goLibraries,
   ...csharpLibraries,
-  ...cppLibraries
+  ...cppLibraries,
+  ...haskellLibraries
 ]
 
 // 言語でフィルターする関数
@@ -98,3 +100,4 @@ export { rLibraries }
 export { goLibraries }
 export { csharpLibraries }
 export { cppLibraries }
+export { haskellLibraries }

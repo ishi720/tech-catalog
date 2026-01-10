@@ -44,7 +44,7 @@ export interface Library {
   id: string
   name: string
   category: LibraryCategory
-  language: 'javascript' | 'php' | 'python' | 'ruby' | 'java' | 'go' | 'rust' | 'csharp' | 'r' | 'cobol' | 'cpp' | 'multi'
+  language: 'javascript' | 'php' | 'python' | 'ruby' | 'java' | 'go' | 'rust' | 'csharp' | 'r' | 'cobol' | 'cpp' | 'haskell' | 'multi'
   description: string
   latestVersion?: string
   officialUrl?: string
@@ -104,7 +104,7 @@ export interface Category {
 }
 
 // 統一された技術アイテム型
-export type TechItem = ProgrammingLanguage | Database | Framework | DevTool
+export type TechItem = ProgrammingLanguage | Database |  DevTool
 
 // フィルター状態
 export interface FilterState {
