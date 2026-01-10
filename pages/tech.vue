@@ -47,6 +47,8 @@
           <option value="go">Go</option>
           <option value="csharp">C#</option>
           <option value="cpp">C++</option>
+          <option value="haskell">Haskell</option>
+          <option value="kotlin">Kotlin</option>
         </select>
 
         <!-- Category Filter (Libraries) -->
@@ -475,16 +477,16 @@ const pageNumbers = computed(() => {
   } else {
     pages.push(1)
     if (current > 3) pages.push('...')
-    
+
     const start = Math.max(2, current - 1)
     const end = Math.min(total - 1, current + 1)
-    
+
     for (let i = start; i <= end; i++) pages.push(i)
-    
+
     if (current < total - 2) pages.push('...')
     pages.push(total)
   }
-  
+
   return pages
 })
 

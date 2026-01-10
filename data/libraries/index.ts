@@ -11,6 +11,7 @@ import { goLibraries } from './go'
 import { csharpLibraries } from './csharp'
 import { cppLibraries } from './cpp'
 import { haskellLibraries } from './haskell'
+import { kotlinLibraries } from './kotlin'
 
 // カテゴリ情報
 export const libraryCategories: LibraryCategoryInfo[] = [
@@ -53,7 +54,8 @@ export const libraries: Library[] = [
   ...goLibraries,
   ...csharpLibraries,
   ...cppLibraries,
-  ...haskellLibraries
+  ...haskellLibraries,
+  ...kotlinLibraries
 ]
 
 // 言語でフィルターする関数
@@ -101,3 +103,4 @@ export { goLibraries }
 export { csharpLibraries }
 export { cppLibraries }
 export { haskellLibraries }
+export { kotlinLibraries }
