@@ -54,6 +54,7 @@ export interface Library {
     | 'csharp'
     | 'r'
     | 'cobol'
+    | 'c'
     | 'cpp'
     | 'haskell'
     | 'kotlin'

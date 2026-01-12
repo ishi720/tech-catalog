@@ -25,6 +25,11 @@
         <option value="r">R</option>
         <option value="go">Go</option>
         <option value="csharp">C#</option>
+        <option value="c">C</option>
+        <option value="cpp">C++</option>
+        <option value="haskell">Haskell</option>
+        <option value="kotlin">Kotlin</option>
+        <option value="swift">Swift</option>
       </select>
 
       <!-- Category Filter (List view) -->
@@ -222,6 +227,7 @@ const displayLanguages = [
   { id: 'ruby', name: 'Ruby' },
   { id: 'r', name: 'R' },
   { id: 'go', name: 'Go' },
+  { id: 'c', name: 'C' },
   { id: 'csharp', name: 'C#' },
   { id: 'cpp', name: 'C++' },
   { id: 'haskell', name: 'Haskell' },
@@ -261,6 +267,7 @@ const getLanguageDisplayName = (language: string): string => {
     java: 'Java',
     r: 'R',
     go: 'Go',
+    c: 'C',
     csharp: 'C#',
     cpp: 'C++',
     cobol: 'COBOL',
@@ -285,6 +292,7 @@ const getLanguageLabel = (language: string): string => {
     csharp: 'C#',
     cobol: 'COBOL',
     haskell: 'Haskell',
+    c: 'C',
     cpp: 'C++',
     kotlin: 'Kotlin',
     swift: 'Swift',
@@ -303,6 +311,7 @@ const getLanguageBadgeClass = (language: string): string => {
     r: 'bg-gray-100 text-gray-800',
     go: 'bg-cyan-100 text-cyan-800',
     csharp: 'bg-purple-100 text-purple-800',
+    c: 'bg-gray-100 text-gray-800',
     cpp: 'bg-green-100 text-green-800',
     cobol: 'bg-gray-100 text-gray-800',
     haskell: 'bg-purple-100 text-purple-800',

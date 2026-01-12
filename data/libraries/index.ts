@@ -13,6 +13,7 @@ import { cppLibraries } from './cpp'
 import { haskellLibraries } from './haskell'
 import { kotlinLibraries } from './kotlin'
 import { swiftLibraries } from './swift'
+import { cLibraries } from './c'
 
 // カテゴリ情報
 export const libraryCategories: LibraryCategoryInfo[] = [
@@ -57,7 +58,8 @@ export const libraries: Library[] = [
   ...cppLibraries,
   ...haskellLibraries,
   ...kotlinLibraries,
-  ...swiftLibraries
+  ...swiftLibraries,
+  ...cLibraries
 ]
 
 // 言語でフィルターする関数
@@ -107,3 +109,4 @@ export { cppLibraries }
 export { haskellLibraries }
 export { kotlinLibraries }
 export { swiftLibraries }
+export { cLibraries }
