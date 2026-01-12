@@ -31,9 +31,9 @@
       class="mb-6"
     >
       <template #filters>
-        <!-- Language Filter (Libraries) -->
+        <!-- Language Filter (Libraries / CMS) -->
         <select
-          v-if="activeTab === 'libraries'"
+          v-if="activeTab === 'libraries' || activeTab === 'cms'"
           v-model="selectedLanguage"
           class="px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-500 outline-none bg-white"
         >
@@ -52,14 +52,14 @@
           <option value="swift">Swift</option>
         </select>
 
-        <!-- Category Filter (Libraries) -->
+        <!-- Category Filter (Libraries only) -->
         <select
           v-if="activeTab === 'libraries'"
           v-model="selectedCategory"
           class="px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-500 outline-none bg-white"
         >
           <option value="">すべてのカテゴリ</option>
-          <option v-for="cat in libraryCategories" :key="cat.id" :value="cat.id">
+          <option v-for="cat in libraryCategoriesWithoutCms" :key="cat.id" :value="cat.id">
             {{ cat.nameJa }}
           </option>
         </select>
@@ -223,6 +223,40 @@
           <div v-if="lib.features && lib.features.length > 0" class="mt-2 flex flex-wrap gap-1">
             <span
               v-for="feature in lib.features.slice(0, 3)"
+              :key="feature"
+              class="px-1.5 py-0.5 text-xs bg-gray-100 text-gray-600 rounded"
+            >
+              {{ feature }}
+            </span>
+          </div>
+        </div>
+      </template>
+
+      <!-- CMS -->
+      <template v-if="activeTab === 'cms'">
+        <div
+          v-for="cms in paginatedItems"
+          :key="cms.id"
+          @click="openLibraryDetail(cms)"
+          class="bg-white rounded-xl shadow-sm border p-4 hover:shadow-md hover:border-primary-200 transition-all cursor-pointer"
+        >
+          <div class="flex items-start justify-between mb-3">
+            <div class="flex items-center gap-3">
+              <TechIcon :name="cms.name" size="2rem" />
+              <div>
+                <h3 class="font-bold text-lg text-gray-900">{{ cms.name }}</h3>
+                <p class="text-sm text-gray-500">{{ cms.license }}</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-1.5 px-2 py-0.5 text-xs rounded-full" :class="getLanguageBadgeClass(cms.language)">
+              <TechIcon :name="getLanguageDisplayName(cms.language)" size="0.875rem" />
+              <span>{{ getLanguageLabel(cms.language) }}</span>
+            </div>
+          </div>
+          <p class="text-sm text-gray-600 mb-3 line-clamp-2">{{ cms.description }}</p>
+          <div v-if="cms.features && cms.features.length > 0" class="mt-2 flex flex-wrap gap-1">
+            <span
+              v-for="feature in cms.features.slice(0, 3)"
               :key="feature"
               class="px-1.5 py-0.5 text-xs bg-gray-100 text-gray-600 rounded"
             >
@@ -404,11 +438,21 @@ watch([activeTab, search, sortBy, selectedLanguage, selectedCategory, itemsPerPa
   currentPage.value = 1
 })
 
+// CMSを除いたライブラリ
+const librariesWithoutCms = computed(() => libraries.filter(lib => lib.category !== 'cms'))
+
+// CMSのみ
+const cmsLibraries = computed(() => libraries.filter(lib => lib.category === 'cms'))
+
+// CMSを除いたカテゴリ一覧
+const libraryCategoriesWithoutCms = computed(() => libraryCategories.filter(cat => cat.id !== 'cms'))
+
 const tabs = computed(() => [
   { id: 'languages', name: 'プログラミング言語', icon: '💻', count: programmingLanguages.length },
   { id: 'databases', name: 'データベース', icon: '🗄️', count: databases.length },
   { id: 'devtools', name: '開発ツール', icon: '🛠️', count: devTools.length },
-  { id: 'libraries', name: 'ライブラリ', icon: '📚', count: libraries.length },
+  { id: 'libraries', name: 'ライブラリ', icon: '📚', count: librariesWithoutCms.value.length },
+  { id: 'cms', name: 'CMS', icon: '📰', count: cmsLibraries.value.length },
 ])
 
 const filteredItems = computed(() => {
@@ -425,13 +469,20 @@ const filteredItems = computed(() => {
       items = [...devTools]
       break
     case 'libraries':
-      items = [...libraries]
+      items = [...librariesWithoutCms.value]
       // ライブラリ用フィルター
       if (selectedLanguage.value) {
         items = items.filter(lib => lib.language === selectedLanguage.value)
       }
       if (selectedCategory.value) {
         items = items.filter(lib => lib.category === selectedCategory.value)
+      }
+      break
+    case 'cms':
+      items = [...cmsLibraries.value]
+      // CMS用言語フィルター
+      if (selectedLanguage.value) {
+        items = items.filter(lib => lib.language === selectedLanguage.value)
       }
       break
   }
