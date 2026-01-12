@@ -128,15 +128,23 @@
               {{ db.type }}
             </span>
           </div>
-          <div class="space-y-1.5 text-sm">
+          <div class="space-y-2 text-sm">
             <p class="flex items-center gap-2">
               <span class="text-gray-400 w-24 shrink-0">バージョン</span>
               <span class="text-gray-700 font-mono text-sm">{{ db.latestVersion }}</span>
             </p>
-            <p class="flex items-center gap-2">
-              <span class="text-gray-400 w-24 shrink-0">クエリ言語</span>
-              <span class="text-gray-700">{{ db.queryLanguage }}</span>
-            </p>
+            <div class="flex items-start gap-2">
+              <span class="text-gray-400 w-24 shrink-0 pt-0.5">クエリ言語</span>
+              <div class="flex flex-wrap gap-1">
+                <span
+                  v-for="ql in db.queryLanguage"
+                  :key="ql"
+                  class="px-2 py-0.5 bg-blue-50 text-blue-700 text-xs rounded-md font-medium"
+                >
+                  {{ ql }}
+                </span>
+              </div>
+            </div>
           </div>
           <div class="mt-3 flex flex-wrap gap-1">
             <span v-for="l in db.dependencyLanguages" :key="l" class="px-2 py-0.5 bg-gray-100 text-gray-600 text-xs rounded-md">
