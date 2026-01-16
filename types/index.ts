@@ -39,6 +39,19 @@ export interface DevTool {
   icon?: string
 }
 
+// ローコード・ノーコードツール
+export interface LowCodeTool {
+  id: string
+  name: string
+  category: 'app-builder' | 'workflow' | 'website' | 'database' | 'internal-tools' | 'ecommerce' | 'form' | 'automation' | 'ai' | 'other'
+  type: 'no-code' | 'low-code' | 'hybrid'
+  platform: string[]
+  pricing: string
+  officialUrl: string
+  notes?: string
+  icon?: string
+}
+
 // ライブラリ
 export interface Library {
   id: string

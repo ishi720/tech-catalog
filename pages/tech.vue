@@ -265,6 +265,43 @@
           </div>
         </div>
       </template>
+
+      <!-- Low-Code / No-Code -->
+      <template v-if="activeTab === 'lowcode'">
+        <div
+          v-for="tool in paginatedItems"
+          :key="tool.id"
+          class="bg-white rounded-xl shadow-sm border p-5 hover:shadow-md hover:border-primary-200 transition-all"
+        >
+          <div class="flex items-start justify-between mb-3">
+            <div class="flex items-center gap-3">
+              <TechIcon :name="tool.name" size="2rem" />
+              <div>
+                <h3 class="font-bold text-lg text-gray-900">{{ tool.name }}</h3>
+                <p class="text-sm text-gray-500">{{ tool.pricing }}</p>
+              </div>
+            </div>
+            <div class="flex flex-col items-end gap-1">
+              <span class="px-2 py-1 text-xs font-medium rounded-full" :class="getLowCodeTypeBadgeClass(tool.type)">
+                {{ getLowCodeTypeLabel(tool.type) }}
+              </span>
+              <span class="px-2 py-0.5 text-xs rounded-full" :class="getLowCodeCategoryBadgeClass(tool.category)">
+                {{ getLowCodeCategoryLabel(tool.category) }}
+              </span>
+            </div>
+          </div>
+          <div class="space-y-1.5 text-sm">
+            <p class="flex items-center gap-2">
+              <span class="text-gray-400 w-20 shrink-0">対応</span>
+              <span class="text-gray-700 text-sm">{{ tool.platform.join(', ') }}</span>
+            </p>
+          </div>
+          <p v-if="tool.notes" class="mt-3 text-sm text-gray-600">{{ tool.notes }}</p>
+          <a :href="tool.officialUrl" target="_blank" rel="noopener" class="mt-3 inline-flex items-center gap-1 text-sm text-primary-600 hover:text-primary-700 font-medium">
+            公式サイト <span class="text-xs">↗</span>
+          </a>
+        </div>
+      </template>
     </div>
 
     <!-- Empty State -->
@@ -419,8 +456,8 @@
 </template>
 
 <script setup lang="ts">
-import { programmingLanguages, databases, devTools, libraries, libraryCategories } from '~/data'
-import type { Library, LibraryCategory } from '~/types'
+import { programmingLanguages, databases, devTools, libraries, libraryCategories, lowCodeTools } from '~/data'
+import type { Library, LibraryCategory, LowCodeTool } from '~/types'
 
 const activeTab = ref('languages')
 const search = ref('')
@@ -453,6 +490,7 @@ const tabs = computed(() => [
   { id: 'devtools', name: '開発ツール', icon: '🛠️', count: devTools.length },
   { id: 'libraries', name: 'ライブラリ', icon: '📚', count: librariesWithoutCms.value.length },
   { id: 'cms', name: 'CMS', icon: '📰', count: cmsLibraries.value.length },
+  { id: 'lowcode', name: 'ローコード・ノーコード', icon: '🧩', count: lowCodeTools.length },
 ])
 
 const filteredItems = computed(() => {
@@ -484,6 +522,9 @@ const filteredItems = computed(() => {
       if (selectedLanguage.value) {
         items = items.filter(lib => lib.language === selectedLanguage.value)
       }
+      break
+    case 'lowcode':
+      items = [...lowCodeTools]
       break
   }
 
@@ -669,6 +710,57 @@ const getCategoryIcon = (category: LibraryCategory): string => {
 const getCategoryName = (category: LibraryCategory): string => {
   const cat = libraryCategories.find(c => c.id === category)
   return cat?.nameJa || category
+}
+
+// ローコード・ノーコード用ヘルパー関数
+const getLowCodeTypeLabel = (type: string): string => {
+  const labels: Record<string, string> = {
+    'no-code': 'ノーコード',
+    'low-code': 'ローコード',
+    'hybrid': 'ハイブリッド'
+  }
+  return labels[type] || type
+}
+
+const getLowCodeTypeBadgeClass = (type: string): string => {
+  const classes: Record<string, string> = {
+    'no-code': 'bg-green-100 text-green-700',
+    'low-code': 'bg-blue-100 text-blue-700',
+    'hybrid': 'bg-purple-100 text-purple-700'
+  }
+  return classes[type] || 'bg-gray-100 text-gray-700'
+}
+
+const getLowCodeCategoryLabel = (category: string): string => {
+  const labels: Record<string, string> = {
+    'app-builder': 'アプリ開発',
+    'workflow': 'ワークフロー',
+    'website': 'Webサイト',
+    'database': 'データベース',
+    'internal-tools': '社内ツール',
+    'ecommerce': 'Eコマース',
+    'form': 'フォーム',
+    'automation': '自動化',
+    'ai': 'AI',
+    'other': 'その他'
+  }
+  return labels[category] || category
+}
+
+const getLowCodeCategoryBadgeClass = (category: string): string => {
+  const classes: Record<string, string> = {
+    'app-builder': 'bg-indigo-50 text-indigo-600',
+    'workflow': 'bg-cyan-50 text-cyan-600',
+    'website': 'bg-pink-50 text-pink-600',
+    'database': 'bg-emerald-50 text-emerald-600',
+    'internal-tools': 'bg-amber-50 text-amber-600',
+    'ecommerce': 'bg-rose-50 text-rose-600',
+    'form': 'bg-violet-50 text-violet-600',
+    'automation': 'bg-orange-50 text-orange-600',
+    'ai': 'bg-sky-50 text-sky-600',
+    'other': 'bg-gray-50 text-gray-600'
+  }
+  return classes[category] || 'bg-gray-50 text-gray-600'
 }
 </script>
 

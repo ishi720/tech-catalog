@@ -2,6 +2,7 @@ export { programmingLanguages } from './languages'
 export { databases } from './databases'
 export { devTools } from './devtools'
 export { libraries, libraryCategories, getLibraryMatrix } from './libraries'
+export { lowCodeTools } from './lowcode'
 
 import type { Category } from '~/types'
 
@@ -29,5 +30,13 @@ export const categories: Category[] = [
     description: 'IDE、CI/CD、コンテナ等のツール',
     icon: '🛠️',
     color: 'bg-orange-500'
+  },
+  {
+    id: 'lowcode',
+    name: 'Low-Code / No-Code',
+    nameJa: 'ローコード・ノーコード',
+    description: 'ノーコード・ローコード開発ツール',
+    icon: '🧩',
+    color: 'bg-purple-500'
   }
 ]
