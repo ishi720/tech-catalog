@@ -302,6 +302,37 @@
           </a>
         </div>
       </template>
+
+      <!-- Cloud Services -->
+      <template v-if="activeTab === 'cloud'">
+        <div
+          v-for="service in paginatedItems"
+          :key="service.id"
+          class="bg-white rounded-xl shadow-sm border p-5 hover:shadow-md hover:border-primary-200 transition-all"
+        >
+          <div class="flex items-start justify-between mb-3">
+            <div class="flex items-center gap-3">
+              <TechIcon :name="getCloudProviderIcon(service.provider)" size="2rem" />
+              <div>
+                <h3 class="font-bold text-lg text-gray-900">{{ service.name }}</h3>
+                <p class="text-sm text-gray-500">{{ service.description }}</p>
+              </div>
+            </div>
+            <div class="flex flex-col items-end gap-1">
+              <span class="px-2 py-1 text-xs font-medium rounded-full" :class="getCloudProviderBadgeClass(service.provider)">
+                {{ getCloudProviderLabel(service.provider) }}
+              </span>
+              <span class="px-2 py-0.5 text-xs rounded-full" :class="getCloudCategoryBadgeClass(service.category)">
+                {{ getCloudCategoryLabel(service.category) }}
+              </span>
+            </div>
+          </div>
+          <p v-if="service.notes" class="mt-2 text-sm text-gray-600">{{ service.notes }}</p>
+          <a :href="service.officialUrl" target="_blank" rel="noopener" class="mt-3 inline-flex items-center gap-1 text-sm text-primary-600 hover:text-primary-700 font-medium">
+            公式サイト <span class="text-xs">↗</span>
+          </a>
+        </div>
+      </template>
     </div>
 
     <!-- Empty State -->
@@ -456,8 +487,8 @@
 </template>
 
 <script setup lang="ts">
-import { programmingLanguages, databases, devTools, libraries, libraryCategories, lowCodeTools } from '~/data'
-import type { Library, LibraryCategory, LowCodeTool } from '~/types'
+import { programmingLanguages, databases, devTools, libraries, libraryCategories, lowCodeTools, cloudServices } from '~/data'
+import type { Library, LibraryCategory, LowCodeTool, CloudService } from '~/types'
 
 const activeTab = ref('languages')
 const search = ref('')
@@ -491,6 +522,7 @@ const tabs = computed(() => [
   { id: 'libraries', name: 'ライブラリ', icon: '📚', count: librariesWithoutCms.value.length },
   { id: 'cms', name: 'CMS', icon: '📰', count: cmsLibraries.value.length },
   { id: 'lowcode', name: 'ローコード・ノーコード', icon: '🧩', count: lowCodeTools.length },
+  { id: 'cloud', name: 'クラウド', icon: '☁️', count: cloudServices.length },
 ])
 
 const filteredItems = computed(() => {
@@ -525,6 +557,9 @@ const filteredItems = computed(() => {
       break
     case 'lowcode':
       items = [...lowCodeTools]
+      break
+    case 'cloud':
+      items = [...cloudServices]
       break
   }
 
@@ -758,6 +793,72 @@ const getLowCodeCategoryBadgeClass = (category: string): string => {
     'form': 'bg-violet-50 text-violet-600',
     'automation': 'bg-orange-50 text-orange-600',
     'ai': 'bg-sky-50 text-sky-600',
+    'other': 'bg-gray-50 text-gray-600'
+  }
+  return classes[category] || 'bg-gray-50 text-gray-600'
+}
+
+// クラウドサービス用ヘルパー関数
+const getCloudProviderIcon = (provider: string): string => {
+  const icons: Record<string, string> = {
+    'aws': 'Amazon Web Services',
+    'gcp': 'Google Cloud',
+    'azure': 'Microsoft Azure'
+  }
+  return icons[provider] || provider
+}
+
+const getCloudProviderLabel = (provider: string): string => {
+  const labels: Record<string, string> = {
+    'aws': 'AWS',
+    'gcp': 'GCP',
+    'azure': 'Azure'
+  }
+  return labels[provider] || provider
+}
+
+const getCloudProviderBadgeClass = (provider: string): string => {
+  const classes: Record<string, string> = {
+    'aws': 'bg-orange-100 text-orange-700',
+    'gcp': 'bg-blue-100 text-blue-700',
+    'azure': 'bg-sky-100 text-sky-700'
+  }
+  return classes[provider] || 'bg-gray-100 text-gray-700'
+}
+
+const getCloudCategoryLabel = (category: string): string => {
+  const labels: Record<string, string> = {
+    'compute': 'コンピューティング',
+    'storage': 'ストレージ',
+    'database': 'データベース',
+    'networking': 'ネットワーク',
+    'security': 'セキュリティ',
+    'ai-ml': 'AI/機械学習',
+    'analytics': '分析',
+    'devops': 'DevOps',
+    'serverless': 'サーバーレス',
+    'container': 'コンテナ',
+    'messaging': 'メッセージング',
+    'iot': 'IoT',
+    'other': 'その他'
+  }
+  return labels[category] || category
+}
+
+const getCloudCategoryBadgeClass = (category: string): string => {
+  const classes: Record<string, string> = {
+    'compute': 'bg-blue-50 text-blue-600',
+    'storage': 'bg-green-50 text-green-600',
+    'database': 'bg-purple-50 text-purple-600',
+    'networking': 'bg-cyan-50 text-cyan-600',
+    'security': 'bg-red-50 text-red-600',
+    'ai-ml': 'bg-pink-50 text-pink-600',
+    'analytics': 'bg-indigo-50 text-indigo-600',
+    'devops': 'bg-amber-50 text-amber-600',
+    'serverless': 'bg-violet-50 text-violet-600',
+    'container': 'bg-teal-50 text-teal-600',
+    'messaging': 'bg-orange-50 text-orange-600',
+    'iot': 'bg-emerald-50 text-emerald-600',
     'other': 'bg-gray-50 text-gray-600'
   }
   return classes[category] || 'bg-gray-50 text-gray-600'

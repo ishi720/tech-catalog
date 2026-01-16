@@ -52,6 +52,17 @@ export interface LowCodeTool {
   icon?: string
 }
 
+// クラウドサービス
+export interface CloudService {
+  id: string
+  name: string
+  provider: 'aws' | 'gcp' | 'azure'
+  category: 'compute' | 'storage' | 'database' | 'networking' | 'security' | 'ai-ml' | 'analytics' | 'devops' | 'serverless' | 'container' | 'messaging' | 'iot' | 'other'
+  description: string
+  officialUrl: string
+  notes?: string
+}
+
 // ライブラリ
 export interface Library {
   id: string

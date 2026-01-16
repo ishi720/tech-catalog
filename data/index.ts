@@ -3,6 +3,7 @@ export { databases } from './databases'
 export { devTools } from './devtools'
 export { libraries, libraryCategories, getLibraryMatrix } from './libraries'
 export { lowCodeTools } from './lowcode'
+export { cloudServices } from './cloud'
 
 import type { Category } from '~/types'
 
@@ -38,5 +39,13 @@ export const categories: Category[] = [
     description: 'ノーコード・ローコード開発ツール',
     icon: '🧩',
     color: 'bg-purple-500'
+  },
+  {
+    id: 'cloud',
+    name: 'Cloud Services',
+    nameJa: 'クラウドサービス',
+    description: 'AWS / GCP / Azureのサービス',
+    icon: '☁️',
+    color: 'bg-sky-500'
   }
 ]
