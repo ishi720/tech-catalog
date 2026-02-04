@@ -47,10 +47,10 @@
             <g>
               <template v-for="edge in edges" :key="`${edge.from}-${edge.to}`">
                 <line
-                  :x1="getNodePosition(edge.from).x"
-                  :y1="getNodePosition(edge.from).y"
-                  :x2="getNodePosition(edge.to).x"
-                  :y2="getNodePosition(edge.to).y"
+                  :x1="getEdgeStart(edge.from, edge.to).x"
+                  :y1="getEdgeStart(edge.from, edge.to).y"
+                  :x2="getEdgeEnd(edge.from, edge.to).x"
+                  :y2="getEdgeEnd(edge.from, edge.to).y"
                   :stroke="getEdgeColor(edge.type)"
                   :stroke-width="2"
                   :stroke-dasharray="edge.type === 'influenced' ? '5,5' : '0'"
@@ -94,7 +94,7 @@
               id="arrowhead"
               markerWidth="10"
               markerHeight="7"
-              refX="9"
+              refX="10"
               refY="3.5"
               orient="auto"
             >
@@ -257,6 +257,42 @@ function getNodePosition(id: string) {
 function getNodeRadius(id: string) {
   const count = connectionCount.value[id] || 1
   return Math.min(12 + count * 3, 30)
+}
+
+// エッジの始点（fromノードの外周）
+function getEdgeStart(fromId: string, toId: string) {
+  const from = getNodePosition(fromId)
+  const to = getNodePosition(toId)
+  const radius = getNodeRadius(fromId)
+
+  const dx = to.x - from.x
+  const dy = to.y - from.y
+  const distance = Math.sqrt(dx * dx + dy * dy)
+
+  if (distance === 0) return from
+
+  return {
+    x: from.x + (dx / distance) * radius,
+    y: from.y + (dy / distance) * radius
+  }
+}
+
+// エッジの終点（toノードの外周）
+function getEdgeEnd(fromId: string, toId: string) {
+  const from = getNodePosition(fromId)
+  const to = getNodePosition(toId)
+  const radius = getNodeRadius(toId)
+
+  const dx = to.x - from.x
+  const dy = to.y - from.y
+  const distance = Math.sqrt(dx * dx + dy * dy)
+
+  if (distance === 0) return to
+
+  return {
+    x: to.x - (dx / distance) * radius,
+    y: to.y - (dy / distance) * radius
+  }
 }
 
 function getNodeColor(id: string) {
