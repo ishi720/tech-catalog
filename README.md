@@ -8,6 +8,7 @@ NuxtJSで構築された技術情報をまとめたカタログサイトです�
 - **データベース** - MySQL, PostgreSQL, MongoDB, Redis等
 - **フレームワーク** - React, Vue, Next.js, Django等
 - **開発ツール** - VS Code, Git, Docker, npm等
+- **言語の関係性グラフ** - 言語間の派生・影響関係を可視化
 
 ## セットアップ
 
@@ -39,13 +40,15 @@ tech-catalog/
 │   ├── index.ts            # データエクスポート
 │   ├── languages.ts        # プログラミング言語
 │   ├── databases.ts        # データベース
-│   └── devtools.ts         # 開発ツール
+│   ├── devtools.ts         # 開発ツール
+│   └── language-relations.ts # 言語の関係性データ
 ├── layouts/
 │   └── default.vue         # デフォルトレイアウト
 ├── pages/                  # ページコンポーネント
 │   ├── index.vue           # ホーム
 │   ├── tech.vue            # 技術一覧
-│   └── libraries.vue        # マトリックス表
+│   ├── libraries.vue       # マトリックス表
+│   └── language-graph.vue  # 言語関係性グラフ
 └── types/
     └── index.ts            # TypeScript型定義
 ```
@@ -74,6 +77,20 @@ tech-catalog/
 }
 ```
 
+### 言語の関係性を追加する
+
+`data/language-relations.ts` に関係性を追加します。
+
+```typescript
+// data/language-relations.ts
+{ from: 'javascript', to: 'typescript', type: 'transpile' },
+```
+
+**関係性タイプ:**
+- `transpile` - トランスパイル型（変換）: 元言語のコードがそのまま動く
+- `derived` - 派生型（後継）: 同じVM/ランタイム上で動く後継言語
+- `influenced` - 影響型（思想継承）: 設計思想やアイデアを参考にした
+
 ### 型定義
 
 各カテゴリの型は `types/index.ts` で定義されています：
@@ -81,6 +98,7 @@ tech-catalog/
 - `ProgrammingLanguage` - プログラミング言語
 - `Database` - データベース
 - `DevTool` - 開発ツール
+- `LanguageRelation` - 言語の関係性
 
 ## カスタマイズ
 

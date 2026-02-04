@@ -1,18 +1,18 @@
 import type { LanguageRelation } from '~/types'
 
 // 言語の関係性データ
-// type: 'derived' = 派生, 'superset' = 上位互換, 'influenced' = 影響
+// type: 'transpile' = トランスパイル型（変換）, 'derived' = 派生型（後継）, 'influenced' = 影響型（思想継承）
 export const languageRelations: LanguageRelation[] = [
   // JavaScript系
-  { from: 'javascript', to: 'typescript', type: 'superset' },
+  { from: 'javascript', to: 'typescript', type: 'transpile' },
   { from: 'javascript', to: 'coffeescript', type: 'derived' },
-  { from: 'javascript', to: 'jsx', type: 'superset' },
-  { from: 'typescript', to: 'tsx', type: 'superset' },
+  { from: 'javascript', to: 'jsx', type: 'transpile' },
+  { from: 'typescript', to: 'tsx', type: 'transpile' },
 
   // C系
-  { from: 'c', to: 'cplusplus', type: 'superset' },
+  { from: 'c', to: 'cplusplus', type: 'transpile' },
   { from: 'c', to: 'csharp', type: 'influenced' },
-  { from: 'c', to: 'objective-c', type: 'superset' },
+  { from: 'c', to: 'objective-c', type: 'transpile' },
   { from: 'c', to: 'd', type: 'influenced' },
   { from: 'c', to: 'go', type: 'influenced' },
   { from: 'c', to: 'rust', type: 'influenced' },
@@ -75,7 +75,7 @@ export const languageRelations: LanguageRelation[] = [
   { from: 'rebol', to: 'red', type: 'derived' },
 
   // Python系
-  { from: 'python', to: 'mojo', type: 'superset' },
+  { from: 'python', to: 'mojo', type: 'transpile' },
   { from: 'python', to: 'nim', type: 'influenced' },
 
   // Smalltalk系

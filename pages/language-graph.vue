@@ -14,16 +14,16 @@
       <div class="flex flex-wrap gap-4 items-center text-sm">
         <span class="font-medium">凡例:</span>
         <span class="flex items-center gap-1">
-          <span class="w-8 h-0.5 bg-blue-500"></span>
-          <span>派生 (derived)</span>
-        </span>
-        <span class="flex items-center gap-1">
           <span class="w-8 h-0.5 bg-green-500"></span>
-          <span>上位互換 (superset)</span>
+          <span>トランスパイル型（変換）</span>
         </span>
         <span class="flex items-center gap-1">
-          <span class="w-8 h-0.5 bg-orange-400 border-dashed"></span>
-          <span>影響 (influenced)</span>
+          <span class="w-8 h-0.5 bg-blue-500"></span>
+          <span>派生型（後継）</span>
+        </span>
+        <span class="flex items-center gap-1">
+          <span class="w-8 h-0.5 bg-orange-400" style="border-top: 2px dashed;"></span>
+          <span>影響型（思想継承）</span>
         </span>
       </div>
     </div>
@@ -132,8 +132,8 @@
 <script setup lang="ts">
 import { programmingLanguages, languageRelations } from '~/data'
 
-const svgWidth = 1200
-const svgHeight = 800
+const svgWidth = 1400
+const svgHeight = 1200
 
 const svgRef = ref<SVGSVGElement | null>(null)
 const hoveredNode = ref<string | null>(null)
@@ -167,66 +167,81 @@ const connectionCount = computed(() => {
   return counts
 })
 
-// 初期位置を計算
+// ツリーを構築して配置
 function calculateInitialPositions() {
-  const langs = programmingLanguages.filter(l => relatedLanguageIds.value.has(l.id))
   const positions: Record<string, { x: number; y: number }> = {}
+  const placed = new Set<string>()
 
-  // グループ分け
-  const groups: Record<string, string[]> = {
-    'c-family': ['c', 'cplusplus', 'csharp', 'objective-c', 'd', 'go', 'rust', 'zig', 'carbon', 'swift'],
-    'java-family': ['java', 'kotlin', 'scala', 'groovy', 'clojure'],
-    'js-family': ['javascript', 'typescript', 'coffeescript', 'jsx', 'tsx', 'nodejs', 'deno', 'bun', 'vue-sfc', 'svelte', 'astro'],
-    'functional': ['haskell', 'elm', 'purescript', 'ocaml', 'fsharp', 'standard-ml', 'roc'],
-    'lisp-family': ['lisp', 'racket'],
-    'ruby-family': ['ruby', 'crystal', 'elixir'],
-    'erlang-family': ['erlang', 'gleam'],
-    'python-family': ['python', 'mojo', 'nim'],
-    'php-family': ['php', 'hack'],
-    'perl-family': ['perl', 'raku'],
-    'logic': ['prolog', 'mercury', 'datalog'],
-    'pascal-family': ['pascal', 'modula-2', 'oberon'],
-    'apl-family': ['apl', 'j', 'k', 'q'],
-    'other': ['smalltalk', 'self', 'simula', 'algol', 'forth', 'factor', 'rebol', 'red', 'html', 'xml', 'sql', 'sparql']
+  // ルートノードを特定
+  const toNodes = new Set(languageRelations.map(r => r.to))
+  const roots = [...new Set(languageRelations.map(r => r.from))].filter(id => !toNodes.has(id))
+
+  // 各ルートからツリーを構築
+  interface TreeNode {
+    id: string
+    children: TreeNode[]
   }
 
-  // グループの中心位置
-  const groupCenters: Record<string, { x: number; y: number }> = {
-    'c-family': { x: 200, y: 200 },
-    'java-family': { x: 500, y: 150 },
-    'js-family': { x: 900, y: 200 },
-    'functional': { x: 200, y: 500 },
-    'lisp-family': { x: 400, y: 400 },
-    'ruby-family': { x: 600, y: 500 },
-    'erlang-family': { x: 700, y: 600 },
-    'python-family': { x: 350, y: 650 },
-    'php-family': { x: 800, y: 450 },
-    'perl-family': { x: 500, y: 550 },
-    'logic': { x: 100, y: 700 },
-    'pascal-family': { x: 150, y: 400 },
-    'apl-family': { x: 1000, y: 600 },
-    'other': { x: 1000, y: 400 }
+  function buildTree(rootId: string): TreeNode | null {
+    if (placed.has(rootId)) return null
+    placed.add(rootId)
+
+    const children: TreeNode[] = []
+    languageRelations
+      .filter(r => r.from === rootId && !placed.has(r.to))
+      .forEach(r => {
+        const child = buildTree(r.to)
+        if (child) children.push(child)
+      })
+
+    return { id: rootId, children }
   }
 
-  langs.forEach(lang => {
-    let group = 'other'
-    for (const [g, ids] of Object.entries(groups)) {
-      if (ids.includes(lang.id)) {
-        group = g
-        break
-      }
+  const trees: TreeNode[] = []
+  roots.forEach(rootId => {
+    const tree = buildTree(rootId)
+    if (tree) trees.push(tree)
+  })
+
+  // ツリーの幅を計算
+  function getTreeWidth(node: TreeNode): number {
+    if (node.children.length === 0) return 1
+    return node.children.reduce((sum, child) => sum + getTreeWidth(child), 0)
+  }
+
+  // ツリーを配置
+  function placeTree(node: TreeNode, x: number, y: number, width: number) {
+    positions[node.id] = { x: x + width / 2, y }
+
+    if (node.children.length === 0) return
+
+    const childY = y + 80
+    let childX = x
+    node.children.forEach(child => {
+      const childWidth = (getTreeWidth(child) / getTreeWidth(node)) * width
+      placeTree(child, childX, childY, childWidth)
+      childX += childWidth
+    })
+  }
+
+  // 各ツリーを横に配置（6つごとに折り返し）
+  const treesPerRow = 6
+  const treeSpacing = 30
+  const rowHeight = 350
+  let currentX = 50
+  let currentY = 50
+  let treeCount = 0
+
+  trees.forEach(tree => {
+    if (treeCount > 0 && treeCount % treesPerRow === 0) {
+      currentX = 50
+      currentY += rowHeight
     }
 
-    const center = groupCenters[group] || { x: 600, y: 400 }
-    const groupMembers = groups[group] || []
-    const indexInGroup = groupMembers.indexOf(lang.id)
-    const angle = (indexInGroup / groupMembers.length) * Math.PI * 2
-    const radius = 60 + (groupMembers.length > 5 ? 30 : 0)
-
-    positions[lang.id] = {
-      x: center.x + Math.cos(angle) * radius,
-      y: center.y + Math.sin(angle) * radius
-    }
+    const treeWidth = Math.max(getTreeWidth(tree) * 70, 120)
+    placeTree(tree, currentX, currentY, treeWidth)
+    currentX += treeWidth + treeSpacing
+    treeCount++
   })
 
   return positions
@@ -309,9 +324,9 @@ function getNodeColor(id: string) {
 
 function getEdgeColor(type: string) {
   switch (type) {
-    case 'derived': return '#3b82f6'
-    case 'superset': return '#10b981'
-    case 'influenced': return '#f97316'
+    case 'transpile': return '#10b981'  // 緑: 変換
+    case 'derived': return '#3b82f6'    // 青: 派生
+    case 'influenced': return '#f97316' // オレンジ: 影響
     default: return '#9ca3af'
   }
 }
