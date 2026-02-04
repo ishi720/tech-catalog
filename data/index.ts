@@ -1,4 +1,5 @@
 export { programmingLanguages } from './languages'
+export { languageRelations } from './language-relations'
 export { databases } from './databases'
 export { devTools } from './devtools'
 export { libraries, libraryCategories, getLibraryMatrix } from './libraries'

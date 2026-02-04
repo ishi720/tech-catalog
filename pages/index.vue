@@ -40,7 +40,7 @@
 
     <!-- Main Links -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div class="grid md:grid-cols-2 gap-6">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         <NuxtLink
           to="/tech"
           class="block bg-white rounded-xl p-8 border-2 border-gray-200 hover:border-primary-400 hover:shadow-lg transition-all group"
@@ -94,6 +94,31 @@
           </div>
           <div class="mt-4 text-primary-600 font-medium flex items-center gap-1">
             詳細を見る <span>→</span>
+          </div>
+        </NuxtLink>
+
+        <NuxtLink
+          to="/language-graph"
+          class="block bg-white rounded-xl p-8 border-2 border-gray-200 hover:border-indigo-400 hover:shadow-lg transition-all group"
+        >
+          <div class="flex items-center gap-4 mb-4">
+            <span class="text-5xl">🔗</span>
+            <div>
+              <h2 class="text-2xl font-bold text-gray-900 group-hover:text-indigo-600 transition-colors">
+                言語の関係性
+              </h2>
+              <p class="text-gray-500">
+                派生・影響を可視化
+              </p>
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">JS → TS</span>
+            <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">C → C++</span>
+            <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm">Ruby → Crystal</span>
+          </div>
+          <div class="mt-4 text-indigo-600 font-medium flex items-center gap-1">
+            グラフを見る <span>→</span>
           </div>
         </NuxtLink>
       </div>
