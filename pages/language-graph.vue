@@ -68,6 +68,7 @@
                   @mousedown.stop="startDragNode($event, node.id)"
                   @mouseenter="hoveredNode = node.id"
                   @mouseleave="hoveredNode = null"
+                  @click.stop="onNodeClick(node.id)"
                 >
                   <circle
                     :r="getNodeRadius(node.id)"
@@ -126,6 +127,79 @@
         </button>
       </div>
     </div>
+
+    <!-- Language Detail Modal -->
+    <Teleport to="body">
+      <div
+        v-if="selectedLanguage"
+        class="fixed inset-0 bg-black/50 flex items-center justify-center z-50"
+        @click="closeModal"
+      >
+        <div
+          class="bg-white rounded-xl shadow-2xl max-w-md w-full mx-4 overflow-hidden"
+          @click.stop
+        >
+          <div class="bg-gradient-to-r from-indigo-600 to-indigo-800 text-white px-6 py-4">
+            <div class="flex items-center justify-between">
+              <h3 class="text-xl font-bold">{{ selectedLanguage.name }}</h3>
+              <button
+                @click="closeModal"
+                class="text-white/80 hover:text-white text-2xl leading-none"
+              >
+                &times;
+              </button>
+            </div>
+          </div>
+          <div class="px-6 py-4 space-y-4">
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <div class="text-sm text-gray-500">誕生年</div>
+                <div class="font-medium">{{ selectedLanguage.birthYear }}年</div>
+              </div>
+              <div>
+                <div class="text-sm text-gray-500">最新バージョン</div>
+                <div class="font-medium">{{ selectedLanguage.latestVersion }}</div>
+              </div>
+              <div>
+                <div class="text-sm text-gray-500">タイプ</div>
+                <div class="font-medium">{{ selectedLanguage.type }}</div>
+              </div>
+              <div>
+                <div class="text-sm text-gray-500">拡張子</div>
+                <div class="font-medium">{{ selectedLanguage.extensions.join(', ') }}</div>
+              </div>
+            </div>
+            <div>
+              <div class="text-sm text-gray-500 mb-1">パラダイム</div>
+              <div class="flex flex-wrap gap-1">
+                <span
+                  v-for="p in selectedLanguage.paradigms"
+                  :key="p"
+                  class="px-2 py-0.5 bg-indigo-100 text-indigo-700 rounded text-sm"
+                >
+                  {{ p }}
+                </span>
+              </div>
+            </div>
+            <div v-if="selectedLanguage.notes">
+              <div class="text-sm text-gray-500 mb-1">備考</div>
+              <div class="text-gray-700">{{ selectedLanguage.notes }}</div>
+            </div>
+            <div v-if="selectedLanguage.officialUrl">
+              <a
+                :href="selectedLanguage.officialUrl"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1 text-indigo-600 hover:text-indigo-800"
+              >
+                公式サイト
+                <span class="text-sm">↗</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Teleport>
   </div>
 </template>
 
@@ -137,6 +211,7 @@ const svgHeight = 1200
 
 const svgRef = ref<SVGSVGElement | null>(null)
 const hoveredNode = ref<string | null>(null)
+const selectedNode = ref<string | null>(null)
 const zoom = ref(1)
 const panX = ref(0)
 const panY = ref(0)
@@ -145,6 +220,7 @@ const lastMousePoint = ref({ x: 0, y: 0 })
 
 // ドラッグ用の状態
 const draggingNode = ref<string | null>(null)
+const hasDragged = ref(false)
 const nodePositionsRef = ref<Record<string, { x: number; y: number }>>({})
 
 // 関係性に含まれる言語のみを抽出
@@ -343,9 +419,28 @@ function screenToSvgCoords(clientX: number, clientY: number) {
   }
 }
 
+// ノードクリック
+function onNodeClick(nodeId: string) {
+  // ドラッグしていた場合はクリックを無視
+  if (hasDragged.value) return
+  selectedNode.value = nodeId
+}
+
+// 選択中の言語情報
+const selectedLanguage = computed(() => {
+  if (!selectedNode.value) return null
+  return programmingLanguages.find(l => l.id === selectedNode.value) || null
+})
+
+// モーダルを閉じる
+function closeModal() {
+  selectedNode.value = null
+}
+
 // ノードのドラッグ開始
 function startDragNode(e: MouseEvent, nodeId: string) {
   draggingNode.value = nodeId
+  hasDragged.value = false
   lastMousePoint.value = { x: e.clientX, y: e.clientY }
 }
 
@@ -363,6 +458,7 @@ function onSvgMouseMove(e: MouseEvent) {
 
   if (draggingNode.value) {
     // ノードをドラッグ中
+    hasDragged.value = true
     const svgRect = svgRef.value?.getBoundingClientRect()
     if (svgRect) {
       const scaleX = svgWidth / svgRect.width / zoom.value
@@ -386,6 +482,10 @@ function onSvgMouseMove(e: MouseEvent) {
 
 // マウスアップ
 function onSvgMouseUp() {
+  // ドラッグしていた場合は少し遅延してリセット（クリックイベントの後）
+  setTimeout(() => {
+    hasDragged.value = false
+  }, 0)
   draggingNode.value = null
   isPanning.value = false
 }
