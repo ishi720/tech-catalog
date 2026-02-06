@@ -56,12 +56,6 @@
               </p>
             </div>
           </div>
-          <div class="flex flex-wrap gap-2">
-            <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">💻 言語</span>
-            <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">🗄️ DB</span>
-            <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm">🏗️ FW</span>
-            <span class="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-sm">🛠️ ツール</span>
-          </div>
           <div class="mt-4 text-primary-600 font-medium flex items-center gap-1">
             詳細を見る <span>→</span>
           </div>
@@ -80,16 +74,6 @@
               <p class="text-gray-500">
                 言語 × 用途マトリックス
               </p>
-            </div>
-          </div>
-          <div class="flex flex-wrap gap-2">
-            <div class="flex items-center gap-1 px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-sm">
-              <TechIcon name="JavaScript" size="1rem" />
-              <span>JavaScript</span>
-            </div>
-            <div class="flex items-center gap-1 px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm">
-              <TechIcon name="PHP" size="1rem" />
-              <span>PHP</span>
             </div>
           </div>
           <div class="mt-4 text-primary-600 font-medium flex items-center gap-1">
@@ -111,11 +95,6 @@
                 派生・影響を可視化
               </p>
             </div>
-          </div>
-          <div class="flex flex-wrap gap-2">
-            <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">JS → TS</span>
-            <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">C → C++</span>
-            <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm">Ruby → Crystal</span>
           </div>
           <div class="mt-4 text-indigo-600 font-medium flex items-center gap-1">
             グラフを見る <span>→</span>
