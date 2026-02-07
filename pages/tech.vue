@@ -490,21 +490,68 @@
 import { programmingLanguages, databases, devTools, libraries, libraryCategories, lowCodeTools, cloudServices } from '~/data'
 import type { Library, LibraryCategory, LowCodeTool, CloudService } from '~/types'
 
-const activeTab = ref('languages')
-const search = ref('')
-const sortBy = ref('name')
-const selectedLanguage = ref('')
-const selectedCategory = ref('')
+const route = useRoute()
+const router = useRouter()
+
+// URLパラメータから初期値を取得
+const getInitialValue = (key: string, defaultValue: string): string => {
+  const value = route.query[key]
+  return typeof value === 'string' ? value : defaultValue
+}
+
+const activeTab = ref(getInitialValue('tab', 'languages'))
+const search = ref(getInitialValue('q', ''))
+const sortBy = ref(getInitialValue('sort', 'name'))
+const selectedLanguage = ref(getInitialValue('lang', ''))
+const selectedCategory = ref(getInitialValue('cat', ''))
 const selectedLibrary = ref<Library | null>(null)
 
 // ページネーション
-const currentPage = ref(1)
+const currentPage = ref(parseInt(getInitialValue('page', '1')) || 1)
 const itemsPerPage = ref(24)
 
-// タブやフィルター変更時にページをリセット
-watch([activeTab, search, sortBy, selectedLanguage, selectedCategory, itemsPerPage], () => {
+// URLパラメータを更新
+const updateQueryParams = () => {
+  const query: Record<string, string> = {}
+
+  if (activeTab.value !== 'languages') query.tab = activeTab.value
+  if (search.value) query.q = search.value
+  if (sortBy.value !== 'name') query.sort = sortBy.value
+  if (selectedLanguage.value) query.lang = selectedLanguage.value
+  if (selectedCategory.value) query.cat = selectedCategory.value
+  if (currentPage.value > 1) query.page = String(currentPage.value)
+
+  router.replace({ query })
+}
+
+// タブやフィルター変更時にページをリセットしてURLを更新
+watch([activeTab, search, sortBy, selectedLanguage, selectedCategory], () => {
   currentPage.value = 1
+  updateQueryParams()
 })
+
+// ページ変更時はURLのみ更新
+watch(currentPage, () => {
+  updateQueryParams()
+})
+
+// ブラウザの戻る/進むに対応
+watch(() => route.query, (newQuery) => {
+  const newTab = typeof newQuery.tab === 'string' ? newQuery.tab : 'languages'
+  const newSearch = typeof newQuery.q === 'string' ? newQuery.q : ''
+  const newSort = typeof newQuery.sort === 'string' ? newQuery.sort : 'name'
+  const newLang = typeof newQuery.lang === 'string' ? newQuery.lang : ''
+  const newCat = typeof newQuery.cat === 'string' ? newQuery.cat : ''
+  const newPage = parseInt(typeof newQuery.page === 'string' ? newQuery.page : '1') || 1
+
+  // 値が異なる場合のみ更新（無限ループ防止）
+  if (activeTab.value !== newTab) activeTab.value = newTab
+  if (search.value !== newSearch) search.value = newSearch
+  if (sortBy.value !== newSort) sortBy.value = newSort
+  if (selectedLanguage.value !== newLang) selectedLanguage.value = newLang
+  if (selectedCategory.value !== newCat) selectedCategory.value = newCat
+  if (currentPage.value !== newPage) currentPage.value = newPage
+}, { deep: true })
 
 // CMSを除いたライブラリ
 const librariesWithoutCms = computed(() => libraries.filter(lib => lib.category !== 'cms'))
