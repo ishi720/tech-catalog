@@ -56,9 +56,6 @@
               </p>
             </div>
           </div>
-          <div class="mt-4 text-primary-600 font-medium flex items-center gap-1">
-            詳細を見る <span>→</span>
-          </div>
         </NuxtLink>
 
         <NuxtLink
@@ -69,15 +66,12 @@
             <span class="text-5xl">📚</span>
             <div>
               <h2 class="text-2xl font-bold text-gray-900 group-hover:text-primary-600 transition-colors">
-                ライブラリ
+                ライブラリマトリックス
               </h2>
               <p class="text-gray-500">
-                言語 × 用途マトリックス
+                言語 × 用途
               </p>
             </div>
-          </div>
-          <div class="mt-4 text-primary-600 font-medium flex items-center gap-1">
-            詳細を見る <span>→</span>
           </div>
         </NuxtLink>
 
@@ -92,12 +86,9 @@
                 言語の関係性
               </h2>
               <p class="text-gray-500">
-                派生・影響を可視化
+                言語の関係性を可視化
               </p>
             </div>
-          </div>
-          <div class="mt-4 text-indigo-600 font-medium flex items-center gap-1">
-            グラフを見る <span>→</span>
           </div>
         </NuxtLink>
       </div>
