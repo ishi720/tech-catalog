@@ -112,4 +112,18 @@ export const languageRelations: LanguageRelation[] = [
 
   // SQL系
   { from: 'sql', to: 'sparql', type: 'influenced' },
+
+  // CSS系
+  { from: 'css', to: 'sass', type: 'derived' },
+  { from: 'css', to: 'less', type: 'derived' },
+
+  // 追加言語の関係性
+  { from: 'lisp', to: 'scheme', type: 'derived' },
+  { from: 'pascal', to: 'delphi', type: 'derived' },
+  { from: 'basic', to: 'vbnet', type: 'derived' },
+  { from: 'javascript', to: 'actionscript', type: 'influenced' },
+  { from: 'python', to: 'gdscript', type: 'influenced' },
+  { from: 'haskell', to: 'idris', type: 'influenced' },
+  { from: 'haskell', to: 'agda', type: 'influenced' },
+  { from: 'haskell', to: 'lean', type: 'influenced' },
 ]

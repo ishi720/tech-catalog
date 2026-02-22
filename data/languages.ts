@@ -640,6 +640,28 @@ export const programmingLanguages: ProgrammingLanguage[] = [
     notes: 'Webスタイル記述'
   },
   {
+    id: 'sass',
+    name: 'Sass',
+    birthYear: 2006,
+    latestVersion: '1.83.4',
+    extensions: ['.sass', '.scss'],
+    type: 'コンパイル（CSSへ）',
+    paradigms: ['宣言型'],
+    officialUrl: 'https://sass-lang.com/',
+    notes: 'CSS拡張、変数・ネスト・ミックスイン対応'
+  },
+  {
+    id: 'less',
+    name: 'Less',
+    birthYear: 2009,
+    latestVersion: '4.2.1',
+    extensions: ['.less'],
+    type: 'コンパイル（CSSへ）',
+    paradigms: ['宣言型'],
+    officialUrl: 'https://lesscss.org/',
+    notes: 'CSS拡張、JavaScript実装'
+  },
+  {
     id: 'pug',
     name: 'Pug',
     birthYear: 2010,
@@ -1265,6 +1287,117 @@ export const programmingLanguages: ProgrammingLanguage[] = [
     paradigms: ['宣言型'],
     officialUrl: 'https://astro.build/',
     notes: '静的サイトジェネレータ'
+  },
+  // 追加言語
+  {
+    id: 'scheme',
+    name: 'Scheme',
+    birthYear: 1975,
+    latestVersion: 'R7RS',
+    extensions: ['.scm', '.ss', '.scheme'],
+    type: 'インタプリタ/コンパイル',
+    paradigms: ['関数型', '手続き型'],
+    officialUrl: 'https://www.scheme.org/',
+    notes: 'Lisp方言、CS教育の定番'
+  },
+  {
+    id: 'delphi',
+    name: 'Delphi',
+    birthYear: 1995,
+    latestVersion: '12 Athens',
+    extensions: ['.pas', '.dpr', '.dfm'],
+    type: 'コンパイル',
+    paradigms: ['オブジェクト指向', '手続き型'],
+    officialUrl: 'https://www.embarcadero.com/products/delphi',
+    notes: 'Pascal派生、RAD Windowsアプリ開発'
+  },
+  {
+    id: 'vbnet',
+    name: 'Visual Basic .NET',
+    birthYear: 2002,
+    latestVersion: 'VB 16.9',
+    extensions: ['.vb', '.vbs'],
+    type: 'コンパイル（CLR）',
+    paradigms: ['オブジェクト指向', '手続き型'],
+    officialUrl: 'https://learn.microsoft.com/dotnet/visual-basic/',
+    notes: 'Microsoft .NET向けBASIC系'
+  },
+  {
+    id: 'actionscript',
+    name: 'ActionScript',
+    birthYear: 1998,
+    latestVersion: '3.0',
+    extensions: ['.as'],
+    type: 'コンパイル',
+    paradigms: ['オブジェクト指向', 'イベント駆動'],
+    officialUrl: 'https://www.adobe.com/devnet/actionscript.html',
+    notes: 'Adobe Flash/AIR向け'
+  },
+  {
+    id: 'webassembly',
+    name: 'WebAssembly',
+    birthYear: 2017,
+    latestVersion: '2.0',
+    extensions: ['.wasm', '.wat'],
+    type: 'バイナリ形式',
+    paradigms: ['低レベル'],
+    officialUrl: 'https://webassembly.org/',
+    notes: 'ブラウザ向けバイナリ実行形式'
+  },
+  {
+    id: 'gdscript',
+    name: 'GDScript',
+    birthYear: 2014,
+    latestVersion: 'Godot 4.4',
+    extensions: ['.gd'],
+    type: 'インタプリタ',
+    paradigms: ['オブジェクト指向', 'イベント駆動'],
+    officialUrl: 'https://gdscript.com/',
+    notes: 'Godotゲームエンジン専用スクリプト'
+  },
+  {
+    id: 'idris',
+    name: 'Idris',
+    birthYear: 2009,
+    latestVersion: '2.0.0',
+    extensions: ['.idr', '.lidr'],
+    type: 'コンパイル',
+    paradigms: ['純粋関数型', '依存型'],
+    officialUrl: 'https://www.idris-lang.org/',
+    notes: '依存型付き関数型言語'
+  },
+  {
+    id: 'lean',
+    name: 'Lean',
+    birthYear: 2013,
+    latestVersion: '4.14.0',
+    extensions: ['.lean'],
+    type: 'コンパイル',
+    paradigms: ['関数型', '依存型'],
+    officialUrl: 'https://lean-lang.org/',
+    notes: '定理証明支援系兼プログラミング言語'
+  },
+  {
+    id: 'agda',
+    name: 'Agda',
+    birthYear: 2007,
+    latestVersion: '2.7.0.1',
+    extensions: ['.agda', '.lagda'],
+    type: 'コンパイル',
+    paradigms: ['純粋関数型', '依存型'],
+    officialUrl: 'https://wiki.portal.chalmers.se/agda/',
+    notes: '依存型付き定理証明支援系'
+  },
+  {
+    id: 'abap',
+    name: 'ABAP',
+    birthYear: 1983,
+    latestVersion: 'ABAP 7.57',
+    extensions: ['.abap'],
+    type: 'インタプリタ/コンパイル',
+    paradigms: ['手続き型', 'オブジェクト指向'],
+    officialUrl: 'https://www.sap.com/products/technology-platform/abap-platform.html',
+    notes: 'SAP専用ビジネスアプリ言語'
   },
   {
     id: 'brainfuck',

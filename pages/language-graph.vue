@@ -320,6 +320,26 @@ function calculateInitialPositions() {
     treeCount++
   })
 
+  // 孤立ノードを配置（関係性のない言語）
+  const isolatedIds = programmingLanguages
+    .map(l => l.id)
+    .filter(id => !placed.has(id))
+
+  const isolatedPerRow = 12
+  let isolatedX = 50
+  let isolatedY = currentY + (treeCount > 0 ? rowHeight : 0)
+  let isolatedCount = 0
+
+  isolatedIds.forEach(id => {
+    if (isolatedCount > 0 && isolatedCount % isolatedPerRow === 0) {
+      isolatedX = 50
+      isolatedY += 80
+    }
+    positions[id] = { x: isolatedX, y: isolatedY }
+    isolatedX += 110
+    isolatedCount++
+  })
+
   return positions
 }
 
@@ -330,8 +350,7 @@ onMounted(() => {
 
 // ノードリスト（描画用）
 const nodeList = computed(() => {
-  const langs = programmingLanguages.filter(l => relatedLanguageIds.value.has(l.id))
-  return langs.map(lang => ({
+  return programmingLanguages.map(lang => ({
     id: lang.id,
     name: lang.name,
     x: nodePositionsRef.value[lang.id]?.x || 0,
