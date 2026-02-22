@@ -97,6 +97,7 @@ export const languageRelations: LanguageRelation[] = [
   { from: 'objective-c', to: 'swift', type: 'derived' },
 
   // マークアップ/テンプレート系
+  { from: 'html', to: 'pug', type: 'transpile' },
   { from: 'html', to: 'xml', type: 'influenced' },
 
   // Node.js系

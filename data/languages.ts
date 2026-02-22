@@ -640,6 +640,17 @@ export const programmingLanguages: ProgrammingLanguage[] = [
     notes: 'Webスタイル記述'
   },
   {
+    id: 'pug',
+    name: 'Pug',
+    birthYear: 2010,
+    latestVersion: '3.0.3',
+    extensions: ['.pug', '.jade'],
+    type: 'テンプレートエンジン',
+    paradigms: ['宣言型'],
+    officialUrl: 'https://pugjs.org/',
+    notes: 'インデントベースのHTMLテンプレート。旧称Jade'
+  },
+  {
     id: 'xml',
     name: 'XML',
     birthYear: 1998,
