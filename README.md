@@ -2,6 +2,10 @@
 
 NuxtJSで構築された技術情報をまとめたカタログサイトです。
 
+## バッチ
+
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/ac0e021061ae49bbbfdc4f390e55310b)](https://app.codacy.com/gh/ishi720/tech-catalog/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+
 ## コンテンツ
 
 - **プログラミング言語** - Python, JavaScript, Java, C++等
